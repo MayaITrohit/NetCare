@@ -1,0 +1,181 @@
+﻿@model IEnumerable<NetCare.Models.Medicine>
+@{
+    ViewBag.Title = "Medicine List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+     .my-input-class {
+        padding: 3px 6px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .my-confirm-class {
+        padding: 3px 6px;
+        font-size: 12px;
+        color: white;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 4px;
+        background-color: #337ab7;
+        text-decoration: none;
+    }
+
+    .my-cancel-class {
+        padding: 3px 6px;
+        font-size: 12px;
+        color: white;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 4px;
+        background-color: #a94442;
+        text-decoration: none;
+    }
+
+    .error {
+        border: solid 1px;
+        border-color: #a94442;
+    }
+
+    .destroy-button {
+        padding: 5px 10px 5px 10px;
+        border: 1px blue solid;
+        background-color: lightgray;
+    }
+</style>
+@using (Html.BeginForm("MedicineList", "Admin", FormMethod.Post))
+{
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header view-list bus">
+                        <div class="info-page">
+                            <h3 class="box-title">Medicine Information</h3>
+                        </div>
+                        <div class="box-tools search-box">                        
+                            <div class="btn btn-info btn-all">
+                                @Html.ActionLink("Add Medicine", "MedicineSave")
+                            </div>
+                        </div>
+                    </div>
+                    @if (TempData["Message"] != null)
+                    {
+                        <div class="alert alert-success" style="float: none;" role="alert">
+                            <b>@TempData["Message"]</b>
+                        </div>
+                    }
+                    @if (TempData["DeleteMessage"] != null)
+                    {
+                        <div class="alert alert-danger" style="float: none;" role="alert">
+                            <b>@TempData["DeleteMessage"]</b>
+                        </div>
+                    }
+                    @if (TempData["Alert"] != null)
+                    {
+                        <div class="alert alert-danger" style="float: none;" role="alert">
+                            <b>@TempData["Alert"]</b>
+                        </div>
+                    }
+
+                    <div class="box-body table-responsive no-padding VIEW-LIST">
+                        <table id="myAdvancedTable" class="table table-hover">
+                            <thead>
+                                <tr class="main-tr">
+                                    <th class="main-th">Drug Name</th>
+                                    <th class="main-th">B N F Code</th>
+                                    <th class="main-th">Route</th>
+                                    <th class="main-th">Risk Number</th>
+                                    <th class="main-th">High Risk Medications</th>
+                                    <th class="main-th">Medium Risk Medications</th>
+                                    <th class="main-th">Ward Exclusion</th>
+                                    <th class="main-th">VTE</th>
+                                    <th class="main-th">Caution Medications</th>
+                                    <th class="main-th">Missed Doses Notification</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => item.DrugName)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Bnfcode)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.Route)</td>
+                                            <td> <a href="~/Admin/RiskNumberForm/@item.ID" target="_blank">@Html.DisplayFor(modelItem => item.RiskFactor)</a></td>
+                                            <td>
+                                                @if (item.IsHighRisk == true)
+                                                {
+                                                    <text><span class="label label-success">YES</span></text>
+                                                }
+                                                else
+                                                {
+                                                    <text><span class="label label-default">NO</span></text>
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (item.IsMediumRisk == true)
+                                                {
+                                                    <text><span class="label label-success">YES</span></text>
+                                                }
+                                                else
+                                                {
+                                                    <text><span class="label label-default">NO</span></text>
+                                                }
+                                            </td>
+                                            <td>@Html.DisplayFor(modelItem => item.ExclusionWards)</td>
+                                            <td>
+                                                @if (item.IsVTE == true)
+                                                {
+                                                    <text><span class="label label-success">YES</span></text>
+                                                }
+                                                else
+                                                {
+                                                    <text><span class="label label-default">NO</span></text>
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (item.IsCautious == true)
+                                                {
+                                                    <text><span class="label label-success">YES</span></text>
+                                                }
+                                                else
+                                                {
+                                                    <text><span class="label label-default">NO</span></text>
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (item.IsMissedDoseNotification == true)
+                                                {
+                                                    <text><span class="label label-success">YES</span></text>
+                                                }
+                                                else
+                                                {
+                                                    <text><span class="label label-default">NO</span></text>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-1.12.2.min.js" integrity="sha256-lZFHibXzMHo3GGeehn1hudTAP3Sc0uKXBXAzHX1sjtk=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script src="http://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/dataTables.cellEdit.js"></script>
+    <script src="~/Scripts/advanced.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+}

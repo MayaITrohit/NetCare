@@ -1,0 +1,140 @@
+﻿@model  NetCare.Models.Medicine
+@{
+    ViewBag.Title = "Risk Number Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("RiskNumberForm", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+   
+    @Html.HiddenFor(model => model.ID)
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12 ">
+                <div class="box">
+                    <div class="box-header view-list">
+                        <div class="info-page">
+                            <h3 class="box-title">Risk Number Form</h3>
+                        </div>
+                    </div>
+
+                    <div class="box-body all-input-btn ">
+                        <div class="summary">
+                            <label>Total yes  = </label> <span class="cnt-yes">0</span> <br>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Question 1</label>
+                            <select>
+                                <option>Select Question 1</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Question 2</label>
+                            <select>
+                                <option>Select Question 2</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Question 3</label>
+                            <select>
+                                <option>Select Question 3</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Question 4</label>
+                            <select>
+                                <option>Select Question 4</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Question 5</label>
+                            <select>
+                                <option>Select Question 5</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Question 6</label>
+                            <select>
+                                <option>Select Question 6</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Question 7</label>
+                            <select>
+                                <option>Select Question 7</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Question 8</label>
+                            <select>
+                                <option>Select Question 8</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <div class="box-footer">
+                                <button id="btnSave" class="btn btn-block btn-warning view-all-1" type="button">Done</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+@section Scripts {
+    <script>
+$(document).ready(function () {
+    $('select').change(function() {
+        // get all selects
+        var allSelects = $('select');
+        // set values count by type
+        var yes = 0;
+        // for each select increase count
+        $.each(allSelects, function(i, s) {
+            // increase count
+            if($(s).val() == 'Yes') { yes++; }
+            });
+        // update count values summary
+        $('.cnt-yes').text(yes);
+     });
+
+    $(document).on("click", "#btnSave", (function () {
+    debugger
+        var RiskFactor= $('.cnt-yes').text();
+        var ID = $('#ID').val();
+        var viewModel =
+                {
+                    RiskFactor : RiskFactor,
+                    ID : ID,
+                };
+            $.ajax({
+            url: '/Admin/RiskNumberForm/',
+            type: 'POST',
+             dataType: 'json',
+             data: '{ obj: ' + JSON.stringify(viewModel) + '}',
+             contentType: 'application/json; charset=utf-8',
+             success: function (response){
+
+                 }
+            });
+        }));
+    });
+    </script>
+}

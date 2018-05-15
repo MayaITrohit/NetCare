@@ -1,0 +1,131 @@
+﻿@{
+
+    TempData.Keep("WardName");
+}
+<section class="sidebar">
+    <div class="logo-pabel">
+        <span class="logo-lg" data-widget="tree">
+            <img src="~/images/logo.png">@*<h1><span class="LogoName"> NetCare</span></h1>*@
+        </span>
+    </div>
+    <div class="user-panel">
+        <div class="info-1">
+            <img src="~/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+            <h1>Welcome @User.Identity.Name</h1>
+            @if (this.User.IsInRole("Pharmacist"))
+            {
+                <p>Pharmacists</p>
+            }
+
+            @if (this.User.IsInRole("Tech"))
+            {
+                <p>Technician</p>
+            }
+            @if (this.User.IsInRole("Dispensary"))
+            {
+                <p>Dispensary</p>
+            }
+        </div>
+    </div>
+    <ul class="sidebar-menu" data-widget="tree">
+        <li class="active"><a href="/Admin/Index/"><i class="fa fa-dashboard"></i><span> Dashboard</span></a></li>
+        @if (this.User.IsInRole("Dispensary"))
+        {
+            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i><span> View Medicine Orders</span></a></li>
+            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i><span> View Inpatient orders</span></a></li>
+        }
+        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i><span> Hospital Live Reports</span></a></li>
+        <li><a href="~/Admin/MedicationsOrderPage3/"><i class="fa fa-circle-o text-yellow"></i><span> Inpatient Orders</span></a></li>
+        <li><a href="~/Admin/PharmacyStoresOrder/"><i class="fa fa-circle-o text-yellow"></i><span> Pharmacy Stores Order</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i><span> Pharmacy Tracker</span></a></li>
+        <li><a href="~/Admin/Guidelines/"><i class="fa fa-circle-o text-yellow"></i><span> Guidelines</span></a></li>
+        <li><a href="~/Scheduler/Index/"><i class="fa fa-circle-o text-yellow"></i><span> Staff Ward Rota</span></a></li>
+        
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-circle-o text-yellow"></i><span>Weekday Ward Selection</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-circle-o"></i><span>Pick a ward</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        @if (this.User.IsInRole("Pharmacist"))
+                        {
+                            if (TempData["WardName"] != null)
+                            {
+                                foreach (var objWardName in TempData["WardName"] as List<NetCare.Models.Ward>)
+                                {
+                                    <li><a href="~/Admin/PharmacistsWardPage/?ward=@objWardName.WardName"><i class="fa fa-circle-o"></i>@objWardName.WardName</a></li>
+                                }
+                            }
+                        }
+                        @if (this.User.IsInRole("Tech"))
+                        {
+                            if (TempData["WardName"] != null)
+                            {
+                                foreach (var objWardName in TempData["WardName"] as List<NetCare.Models.Ward>)
+                                {
+                                    <li><a href="~/Admin/TechnicianWardPage/?ward=@objWardName.WardName"><i class="fa fa-circle-o"></i>@objWardName.WardName</a></li>
+                                }
+                            }
+                        }
+                    </ul>
+                </li>
+                <li><a href="#"><i class="fa fa-circle-o"></i>Pick by consultant/team</a></li>
+            </ul>
+        </li>
+
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-circle-o text-yellow"></i><span>Weekend Worklist</span><span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="#"><i class="fa fa-circle-o"></i> Medicine</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Surgery</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Orthopaedic</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Cardiac</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Peads</a></li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-circle-o text-yellow"></i><span>Maintanance Pages</span><span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="~/Admin/SuperUserList/"><i class="fa fa-circle-o"></i> Super User List</a></li>
+                <li><a href="~/Admin/MedicineList/"><i class="fa fa-circle-o"></i> Medicine List</a></li>
+                <li><a href="~/Admin/GuidelinesList/"><i class="fa fa-circle-o"></i> GuidLines List</a></li>       
+                <li><a href="~/Admin/NewsList/"><i class="fa fa-circle-o"></i> News List</a></li>         
+            </ul>
+        </li>
+        @if (this.User.IsInRole("Admin"))
+        {
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-circle-o text-yellow"></i><span>Maintanance Pages</span><span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Admin</a></li>
+                    <li><a href="~/Admin/SuperUserList/"><i class="fa fa-circle-o"></i> Super User List</a></li>
+                    <li><a href="~/Admin/MedicineList/"><i class="fa fa-circle-o"></i> Medicine List</a></li>
+                    <li><a href="~/Admin/GuidelinesList/"><i class="fa fa-circle-o"></i> GuidLines List</a></li>
+                    <li><a href="~/Admin/NewsList/"><i class="fa fa-circle-o"></i> News List</a></li>                        
+                </ul>
+            </li>
+        }
+    </ul>
+</section>

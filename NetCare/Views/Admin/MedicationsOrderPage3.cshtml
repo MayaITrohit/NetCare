@@ -1,0 +1,266 @@
+﻿@model NetCare.Models.PatientMedicationOrder
+@{
+    ViewBag.Title = "Medications Order Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .my-input-class {
+        padding: 3px 6px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .my-confirm-class {
+        padding: 3px 6px;
+        font-size: 12px;
+        color: white;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 4px;
+        background-color: #337ab7;
+        text-decoration: none;
+    }
+
+    .my-cancel-class {
+        padding: 3px 6px;
+        font-size: 12px;
+        color: white;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 4px;
+        background-color: #a94442;
+        text-decoration: none;
+    }
+
+    .error {
+        border: solid 1px;
+        border-color: #a94442;
+    }
+
+    .destroy-button {
+        padding: 5px 10px 5px 10px;
+        border: 1px blue solid;
+        background-color: lightgray;
+    }
+</style>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header view-list">
+                    <div class="info-page">
+                        <h3 class="box-title">Medication Order Page</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="row MedicationsOrderPage-section">
+                            <div class="col-xs-4 name-title OrderPage-section">
+                                <label class="box-title">Pharmacist Name:</label>
+                                <label class="box-all">@User.Identity.Name</label>
+                            </div>
+                            <div class="col-lg-5 name-title OrderPage-section">
+                                <label class="box-title">Bleep:</label>
+                                @Html.EditorFor(model => model.Bleep, new { htmlAttributes = new { @class = "form-control box-all", @maxlength = "4" } })
+                                @Html.ValidationMessageFor(model => model.Bleep, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body table-responsive no-padding VIEW-LIST">
+                    <table id="myAdvancedTable" class="table table-hover">
+                        <thead>
+                            <tr class="main-tr">
+                                <th class="main-th">Ward</th>
+                                <th class="main-th">Patient Name</th>
+                                <th class="main-th">Hospital Number</th>
+                                <th class="main-th">Drug Name</th>
+                                <th class="main-th">Dose</th>
+                                <th class="main-th">Frequency</th>
+                                <th class="main-th">Route</th>
+                                <th class="main-th">Screened<br /> status</th>
+                                <th class="main-th">Pack Size</th>
+                                <th class="main-th">Ward Stock</th>
+                                <th class="main-th">Non-Formulary</th>
+                                <th class="main-th">NOMAD</th>
+                                <th class="main-th">Last Ordered</th>
+                                <th class="main-th">IP</th>
+                                <th class="main-th">OSD</th>
+                                <th class="main-th">New instruction</th>
+                                <th class="main-th">Quantity</th>
+                                <th class="main-th">Priority</th>
+                                <th class="main-th" data-toggle="tooltip" title="Tick Box To Order">Order</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.PatientMedList != null)
+                            {
+                                foreach (var item in Model.PatientMedList)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.WardName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.PatientName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.hospital_no)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.drug_description)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Primary_Dose)</td>
+                                        @if (item.frequency_description == null)
+                                        {
+                                            <td>@Html.DisplayFor(modelItem => item.c_alt_dose)</td>
+                                        }
+                                        else if (item.prn.Contains("Y"))
+                                        {
+                                            <td>@Html.DisplayFor(modelItem => item.frequency_description) <span class="info">(When Required)</span></td>
+                                        }
+                                        else if (item.stat.Contains("Y"))
+                                        {
+                                            <td>@Html.DisplayFor(modelItem => item.frequency_description) <span class="info">(Stat)</span></td>
+                                        }
+                                        else
+                                        {
+                                            <td>@Html.DisplayFor(modelItem => item.frequency_description)</td>
+                                        }
+                                        <td>@Html.DisplayFor(modelItem => item.route)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Screened_Output)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.PackSize_Output)</td>
+                                        <td>
+                                            @if (item.WardStock_Output != null)
+                                            {
+                                                <text><span class="label label-success">Stock</span></text>
+                                            }
+                                            else
+                                            {
+                                                <text><span class="label label-default">Temp Stock</span></text>
+                                            }
+                                        </td>
+                                        @if (item.SpecialConsid_Output != null)
+                                        {
+                                            if (item.SpecialConsid_Output.Contains(" NON-FORMULARY DRUG"))
+                                            {
+                                                <td>NFD</td>
+                                            }
+                                            else if (item.SpecialConsid_Output != null)
+                                            {
+                                                if (item.SpecialConsid_Output.Contains("CD Schedule 1"))
+                                                {
+                                                    <td><div class="numberCircle">1</div></td>
+                                                }
+                                                else if (item.SpecialConsid_Output.Contains("CD Schedule 2"))
+                                                {
+                                                    <td><div class="numberCircle">2</div></td>
+                                                }
+                                                else if (item.SpecialConsid_Output.Contains("CD Schedule 3"))
+                                                {
+                                                    <td><div class="numberCircle">3</div></td>
+                                                }
+                                                else if (item.SpecialConsid_Output.Contains("CD Schedule 4"))
+                                                {
+                                                    <td><div class="numberCircle">4</div></td>
+                                                }
+                                                else if (item.SpecialConsid_Output.Contains("CD Schedule 5"))
+                                                {
+                                                    <td><div class="numberCircle">5</div></td>
+                                                }
+                                                else
+                                                {
+                                                    <td>@Html.DisplayFor(modelItem => item.SpecialConsid_Output)</td>
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                        <td>
+                                            @if (item.Nomad_Output == null)
+                                            {
+                                                <span></span>
+                                            }
+                                            @if (item.Nomad_Output != null)
+                                            {
+                                                if (item.Nomad_Output.Contains("NOMAD"))
+                                                {
+                                                    <img class="check-mark" data-toggle="tooltip" src="~/images/NOMAD.jpg" title="@Html.DisplayFor(modelItem => item.Nomad_Output)" />
+                                                }
+                                            }
+                                        </td>
+
+                                        <td>24-07-2017</td>
+                                        <td>
+                                            @if (item.Nomad_Output != null)
+                                            {
+                                                if (item.Nomad_Output.Contains("NOMAD"))
+                                                {
+                                                    <input type="checkbox" name="IP" checked="checked">
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <input type="checkbox" name="IP">
+                                            }
+                                        </td>
+                                        <td>
+                                            @if (item.Nomad_Output != null)
+                                            {
+                                                if (item.Nomad_Output.Contains("NOMAD"))
+                                                {
+                                                    <input type="checkbox" name="OSD" checked="checked">
+                                                }
+                                                else
+                                                {
+
+
+                                                }
+
+                                            }
+                                            else
+                                            {
+                                                <input type="checkbox" name="OSD">
+                                            }
+                                        </td>
+                                        <td>New instruction</td>
+                                        <td>
+                                            <select>
+                                                <option value="OP">OP</option>
+                                                <option value="1">1</option>
+                                                <option value="7">7</option>
+                                                <option value="14">14</option>
+                                                <option value="21">21</option>
+                                                <option value="28">28</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select>
+                                                <option value="A">A</option>
+                                                <option value="B">B</option>
+                                            </select>
+                                        </td>
+                                        <td><input type="checkbox" name="Tick Box To Order"></td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                    <div class="form-group col-md-3 pull-right OrderPage-section">
+                        <div class="add-user box-footer">
+                            <button type="button" class="btn btn-block btn-warning pull-right">
+                                Submit to Pharmacy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-1.12.2.min.js" integrity="sha256-lZFHibXzMHo3GGeehn1hudTAP3Sc0uKXBXAzHX1sjtk=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+  <script src="~/Scripts/datatables.min.js"></script>
+    <script src="~/Scripts/dataTables.cellEdit.js"></script>
+    <script src="~/Scripts/advanced.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+}

@@ -1,0 +1,54 @@
+﻿@model NetCare.Models.News
+@{
+    ViewBag.Title = "News Save";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .form-group.col-lg-12 select {
+        border: 1px solid #ccc;
+        border-radius: 3px 0 0 3px;
+        height: 34px;
+        padding-left: 5px;
+        width: 100%;
+    }
+</style>
+@using (Html.BeginForm("NewsSave", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12 ">
+                <div class="box">
+                    <div class="box-header view-list">
+                        <div class="info-page">
+                            <h3 class="box-title">News Information</h3>
+                        </div>
+                    </div>
+                    <div class="box-body all-input-btn">
+                        <div class="form-group col-lg-6">
+                            <label>News heading</label>
+                            @Html.EditorFor(model => model.newshead, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.newshead, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>News Date</label>
+                            @Html.EditorFor(model => model.newsdate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.newsdate, "", new { @class = "text-danger" })
+                        </div> 
+                        <div class="form-group col-lg-6">
+                            <label>News Body</label>
+                            @Html.TextAreaFor(model => model.newsbody, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.newsbody, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <div class="box-footer">
+                                <button class="btn btn-block btn-warning view-all-1" type="submit">SAVE</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

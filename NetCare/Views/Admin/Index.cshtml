@@ -1,0 +1,182 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .content.admin-home .box {
+        min-height: auto;
+    }
+
+    .box.box-warning.direct-chat.direct-chat-warning {
+        min-height: 390px;
+    }
+</style>
+<section class="content-header">
+    <div class="col-sm-1 col-sm-1 col-xs-12 left-icon">
+        <img src="~/images/icon-1.png" />
+    </div>
+    <div class="col-md-10 col-sm-10 col-xs-12 right-text-header">
+        @if (this.User.IsInRole("Pharmacist"))
+        {
+            <h1>Pharmacists Dashboard</h1>
+            <p>Pharmacists</p>
+        }
+
+        @if (this.User.IsInRole("Tech"))
+        {
+            <h1>Technician Dashboard</h1>
+            <p>Technician</p>
+        }
+
+        @if (this.User.IsInRole("Dispensary"))
+        {
+            <h1>Dispensary Dashboard</h1>
+            <p>Dispensary</p>
+        }
+    </div>
+</section>
+<section class="content admin-home">
+    <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <div class="panel-body">
+                    <div class="statistic-box">
+                        <h2><span class="count-number">@ViewBag.PatientCount</span> </h2>
+                        <div class="small"> Total Patient </div>
+                        <div class="sparkline1 text-center"></div>
+                    </div>
+                    <div class="icon"><img src="~/images/icon_1.png"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <div class="panel-body">
+                    <div class="statistic-box">
+                        <h2><span class="count-number">1</span> </h2>
+                        <div class="small"> Today Patient </div>
+                        <div class="sparkline1 text-center"></div>
+                    </div>
+                    <div class="icon"><img src="~/images/icon_1.png"></div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix visible-sm-block"></div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <div class="panel-body">
+                    <div class="statistic-box">
+                        <h2><span class="count-number">17</span> </h2>
+                        <div class="small">  Today Prescription</div>
+                        <div class="sparkline1 text-center"></div>
+                    </div>
+                    <div class="icon"><img src="~/images/icon-2.png"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box">
+                <div class="panel-body">
+                    <div class="statistic-box">
+                        <h2><span class="count-number">17</span> </h2>
+                        <div class="small">  New Appointment</div>
+                        <div class="sparkline1 text-center"></div>
+                    </div>
+                    <div class="icon"><img src="~/images/icon-2.png"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box box-danger">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Latest Patient</h3>
+                            <div class="box-tools pull-right">
+                                <span class="label label-danger">@ViewBag.Patient.Count New Patient</span>
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body no-padding">
+                            <ul class="users-list clearfix">
+                                @if (ViewBag.Patient != null && ViewBag.Patient.Count > 0)
+                                {
+                                    foreach (var objPatient in ViewBag.Patient)
+                                    {
+                                        <li>
+                                            <img src="~/dist/img/user1-128x128.jpg" alt="User Image">
+                                            <a class="users-list-name" href="#">@objPatient.forenames</a>
+                                            <span class="users-list-date">Today</span>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                            <!-- /.users-list -->
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer text-center">
+                            <a href="javascript:void(0)" class="uppercase">View All Patient</a>
+                        </div>
+                        <!-- /.box-footer -->
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!-- /.box -->
+                    <!-- PRODUCT LIST -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Latest Pharmacy News</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <ul class="products-list product-list-in-box">
+                                @if (ViewBag.News != null && ViewBag.News.Count > 0)
+                                {
+                                    foreach (var objNews in ViewBag.News)
+                                    {
+                                        <li class="item">
+
+                                            <div class="product-img">
+                                                <img src="~/images/1.jpg" alt="Product Image">
+                                            </div>
+                                            <div class="product-info">
+                                                <a href="#" class="product-title">@objNews.NewsHead</a>
+                                                <p>
+                                                    @objNews.NewsBody
+                                                </p>
+                                                <small><i class="fa fa-clock-o"></i> 5 mins   @(objNews.NewsDate != null ? string.Format("{0:d MMMM yyyy}", objNews.NewsDate) : "")</small>
+                                            </div>
+                                        </li>
+                                    }
+                                }
+                                <!-- /.item -->
+                            </ul>
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer text-center">
+                            <a href="javascript:void(0)" class="uppercase">View All Pharmacy News</a>
+                        </div>
+                        <!-- /.box-footer -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

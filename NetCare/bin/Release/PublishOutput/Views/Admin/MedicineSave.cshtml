@@ -1,0 +1,109 @@
+﻿@model NetCare.Models.Medicine
+@{
+    ViewBag.Title = "Save Medicine";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .form-group.col-lg-12 select {
+        border: 1px solid #ccc;
+        border-radius: 3px 0 0 3px;
+        height: 34px;
+        padding-left: 5px;
+        width: 100%;
+    }
+</style>
+@using (Html.BeginForm("MedicineSave", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12 ">
+                <div class="box">
+                    <div class="box-header view-list">
+                        <div class="info-page">
+                            <h3 class="box-title">Medicine Information</h3>
+                        </div>
+                    </div>
+                    <div class="box-body all-input-btn">
+                        <div class="form-group col-lg-6">
+                            <label>Drug Name</label>
+                            @Html.EditorFor(model => model.DrugName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DrugName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>BNF Code</label>
+                            @Html.EditorFor(model => model.Bnfcode, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Bnfcode, "", new { @class = "text-danger" })
+                            @*<select>
+                                    <option>Select BNF Code</option>
+                                    <option value="8.01">8.01</option>
+                                    <option value="05.04.01">05.04.01</option>
+                                    <option value="05.03.01">05.03.01</option>
+                                </select>*@
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Route</label>
+                            @Html.EditorFor(model => model.Route, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Route, "", new { @class = "text-danger" })
+                            @*<select>
+                                    <option>Select Route</option>
+                                    <option value="Oral">Oral</option>
+                                    <option value="Subcutaneous">Subcutaneous</option>
+                                    <option value="Topical AFFECTED AREA">Topical AFFECTED AREA</option>
+                                    <option value="LEFT ear">LEFT ear</option>
+                                    <option value="Rectal">Rectal</option>
+                                    <option value="Intravenous Infusion INTERMITTENT14">Intravenous Infusion INTERMITTENT14</option>
+                                    <option value="Intravenous BOLUS injection">Intravenous BOLUS injection</option>
+                                </select>*@
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Exclusion Ward</label>
+                            @Html.EditorFor(model => model.ExclusionWards, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ExclusionWards, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Risk Factor</label>
+                            @Html.EditorFor(model => model.RiskFactor, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.RiskFactor, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-lg-12 box-check-box">
+                            <div class="form-group col-lg-2 checkmedicine">
+                                <label>High Risk</label>
+                                @Html.CheckBoxFor(model => model.IsHighRisk, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="form-group col-lg-2">
+                                <label>Medium Risk</label>
+                                @Html.CheckBoxFor(model => model.IsMediumRisk, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="form-group col-lg-2">
+                                <label>POPAANPTA</label>
+                                @Html.CheckBoxFor(model => model.POPAANPTA, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="form-group col-lg-2">
+                                <label>VTE</label>
+                                @Html.CheckBoxFor(model => model.IsVTE, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="form-group col-lg-2">
+                                <label>Cautions</label>
+                                @Html.CheckBoxFor(model => model.IsCautious, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="form-group col-lg-2">
+                                <label>Missed Dose</label>
+                                @Html.CheckBoxFor(model => model.IsMissedDoseNotification, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <div class="box-footer">
+                                <button class="btn btn-block btn-warning view-all-1" type="button">SAVE</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+@section Scripts {
+
+}

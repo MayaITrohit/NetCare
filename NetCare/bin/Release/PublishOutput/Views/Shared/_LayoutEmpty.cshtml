@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title -  Net Care</title>
+
+    @Scripts.Render("~/bundles/scripts")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/fullcalendar/Site.css" rel="stylesheet" />
+    <link href="~/fullcalendar/bootstrap.css" rel="stylesheet" />
+    <link href="~/fullcalendar/fullcalendar.css" rel="stylesheet" />
+    <script src="~/fullcalendar/fullcalendar.js"></script>
+
+   
+    <style>
+        a.tooltip {
+            outline: none;
+        }
+        .tooltip {
+            opacity: 1 !important;
+        }
+        a.tooltip strong {
+            line-height: 30px;
+        }
+        a.tooltip:hover {
+            text-decoration: none;
+        }
+        a.tooltip span {
+            display: none;
+            line-height: 16px;
+            margin-left: 28px;
+            margin-top: -2px;
+            padding: 10px;
+            z-index: 10;
+        }
+        .ui-datepicker.ui-widget.ui-widget-content.ui-helper-clearfix.ui-corner-all {
+            z-index: 9999 !important;
+        }
+        a.tooltip:hover span {
+            display: inline;
+            position: absolute;
+            color: #111;
+            border: 1px solid #DCA;
+            background: #fffAF0;
+        }
+        .btn.btn-default.btn-file {
+            text-align: left;
+            width: 100%;
+        }
+        .callout {
+            z-index: 20;
+            position: absolute;
+            top: 30px;
+            border: 0;
+            left: -12px;
+        }
+        /*CSS3 extras*/
+        a.tooltip span {
+            border-radius: 4px;
+            box-shadow: 5px 5px 8px #CCC;
+        }
+
+        .form-group.col-lg-6 select {
+            border: 1px solid #ccc;
+            border-radius: 3px 0 0 3px;
+            height: 34px;
+            padding-left: 5px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    
+      
+    
+  @RenderBody()       
+    
+    @RenderSection("scripts", required: false)
+</body>
+</html>

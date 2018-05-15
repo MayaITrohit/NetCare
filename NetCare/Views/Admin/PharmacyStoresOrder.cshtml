@@ -1,0 +1,151 @@
+﻿@model NetCare.Models.wardstockMainModel
+@{
+    ViewBag.Title = "Pharmacy Stores Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .my-input-class {
+        padding: 3px 6px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .my-confirm-class {
+        padding: 3px 6px;
+        font-size: 12px;
+        color: white;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 4px;
+        background-color: #337ab7;
+        text-decoration: none;
+    }
+
+    .my-cancel-class {
+        padding: 3px 6px;
+        font-size: 12px;
+        color: white;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 4px;
+        background-color: #a94442;
+        text-decoration: none;
+    }
+
+    .error {
+        border: solid 1px;
+        border-color: #a94442;
+    }
+
+    .destroy-button {
+        padding: 5px 10px 5px 10px;
+        border: 1px blue solid;
+        background-color: lightgray;
+    }
+</style>
+
+@using (Html.BeginForm("PharmacyStoresOrder", "Admin", FormMethod.Post, new { id = "PharmacyStore", name = "PharmacyStore" }))
+{
+    <section class="content">
+        <div id="messages" class="hide" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header view-list">
+                        <div class="info-page">
+                            <h3 class="box-title">Pharmacy Stores Order</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="row StoresMedicationOrder-section">
+                                <div class="col-lg-2 col-md-2">
+                                    <div class="form-group">
+                                        @Html.DropDownListFor(m => m.ID, Model.WardList, "---Select Ward---", new { Class = "ddlStyle", onchange = "SelectedIndexChanged()" })
+                                        @Html.ValidationMessageFor(model => model.ID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-2 name-title StoresMedicationOrder">
+                                    <label class="box-title">Date:</label>
+                                    <label class="box-all"> 04/11/1991</label>
+                                </div>
+                                <div class="col-lg-2 col-md-2 name-title StoresMedicationOrder">
+                                    <label class="box-title">Time:</label>
+                                    <label class="box-all">04:19</label>
+                                </div>
+                                <div class="col-lg-2 col-md-2 name-title StoresMedicationOrder">
+                                    <label class="box-title">User:</label>
+                                    <label class="box-all">@User.Identity.Name</label>
+                                </div>
+                                <div class="col-lg-4 col-md-4 name-title StoresMedicationOrder">
+                                    <label class="box-title">Bleep:</label>
+                                    <input type="text" class="form-control box-all" id="Bleep" placeholder="Bleep">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="wardStockListGrid" class="box-body table-responsive no-padding VIEW-LIST">
+
+                        <table id="myAdvancedTable" class="table table-hover">
+                            <thead>
+                                <tr class="main-tr">
+                                    <th class="main-th">lnkdid</th>
+                                    <th class="main-th">Stock / Temp Stock</th>
+                                    <th class="main-th">Form</th>
+                                    <th class="main-th">Strength</th>
+                                    <th class="main-th">Size</th>
+                                    <th class="main-th">Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.WardstockList != null)
+                                {
+                                    foreach (var item in Model.WardstockList)
+                                    {
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => item.lnkdid)</td>
+                                            <td>
+                                                @if (item.drugfull == item.drug_name)
+                                                {
+                                                    <text><span class="label label-success">Stock</span></text>
+                                                }
+                                                else
+                                                {
+                                                    <text><span class="label label-default">Temp Stock</span></text>
+                                                }
+                                            </td>
+                                            <td>@Html.DisplayFor(modelItem => item.drug_form)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.drug_strength)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.drug_packsize)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.drugfull) </td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                        <div class="form-group col-md-2 pull-right OrderPage-section">
+                            <div class="add-user box-footer">
+                                <button type="submit" class="btn btn-block btn-warning" id="sendmail">Send</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-1.12.2.min.js" integrity="sha256-lZFHibXzMHo3GGeehn1hudTAP3Sc0uKXBXAzHX1sjtk=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script src="http://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/dataTables.cellEdit.js"></script>
+    <script src="~/Scripts/advanced.js"></script>
+
+     <script type="text/javascript">
+        function SelectedIndexChanged() {
+          //Form post
+           document.PharmacyStore.submit();
+        }
+    </script>
+}

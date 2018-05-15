@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="JacModelStoreContainer" CdmEntityContainer="JacEntities">
+    <EntitySetMapping Name="actualprescriptionmeds">
+      <EntityTypeMapping TypeName="JacModel.actualprescriptionmed">
+        <MappingFragment StoreEntitySet="actualprescriptionmeds">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="drug_description" ColumnName="drug_description" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="forenames" ColumnName="forenames" />
+          <ScalarProperty Name="hospital_no" ColumnName="hospital_no" />
+          <ScalarProperty Name="frequency_description" ColumnName="frequency_description" />
+          <ScalarProperty Name="frequency_code" ColumnName="frequency_code" />
+          <ScalarProperty Name="ward" ColumnName="ward" />
+          <ScalarProperty Name="discontinued_by" ColumnName="discontinued_by" />
+          <ScalarProperty Name="ward_stock" ColumnName="ward_stock" />
+          <ScalarProperty Name="order_type" ColumnName="order_type" />
+          <ScalarProperty Name="secondary_dose" ColumnName="secondary_dose" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="primary_dose_description" ColumnName="primary_dose_description" />
+          <ScalarProperty Name="primary_dose" ColumnName="primary_dose" />
+          <ScalarProperty Name="lnkpid" ColumnName="lnkpid" />
+          <ScalarProperty Name="current_spell" ColumnName="current_spell" />
+          <ScalarProperty Name="prn" ColumnName="prn" />
+          <ScalarProperty Name="stop_date" ColumnName="stop_date" />
+          <ScalarProperty Name="stop_days_doses" ColumnName="stop_days_doses" />
+          <ScalarProperty Name="stop_days_doses_flag" ColumnName="stop_days_doses_flag" />
+          <ScalarProperty Name="change_start_date" ColumnName="change_start_date" />
+          <ScalarProperty Name="change_start_time" ColumnName="change_start_time" />
+          <ScalarProperty Name="lnkordid" ColumnName="lnkordid" />
+          <ScalarProperty Name="route" ColumnName="route" />
+          <ScalarProperty Name="stat" ColumnName="stat" />
+          <ScalarProperty Name="stop_date1" ColumnName="stop_date1" />
+          <ScalarProperty Name="prescribing_drug_id" ColumnName="prescribing_drug_id" />
+          <ScalarProperty Name="lnkordid1" ColumnName="lnkordid1" />
+          <ScalarProperty Name="group_code" ColumnName="group_code" />
+          <ScalarProperty Name="c_alt_dose" ColumnName="c_alt_dose" />
+          <ScalarProperty Name="c_bulk" ColumnName="c_bulk" />
+          <ScalarProperty Name="suspend_date" ColumnName="suspend_date" />
+          <ScalarProperty Name="suspend_time" ColumnName="suspend_time" />
+          <ScalarProperty Name="resume_date" ColumnName="resume_date" />
+          <ScalarProperty Name="resume_time" ColumnName="resume_time" />
+          <ScalarProperty Name="suspend_reason" ColumnName="suspend_reason" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="admissiondetails">
+      <EntityTypeMapping TypeName="JacModel.admissiondetail">
+        <MappingFragment StoreEntitySet="admissiondetails">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="start_time" ColumnName="start_time" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="end_time" ColumnName="end_time" />
+          <ScalarProperty Name="lnkpid" ColumnName="lnkpid" />
+          <ScalarProperty Name="consultant" ColumnName="consultant" />
+          <ScalarProperty Name="lnkspell" ColumnName="lnkspell" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="allergies">
+      <EntityTypeMapping TypeName="JacModel.allergy">
+        <MappingFragment StoreEntitySet="allergies">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="lnkpid" ColumnName="lnkpid" />
+          <ScalarProperty Name="allergy_description" ColumnName="allergy_description" />
+          <ScalarProperty Name="reaction" ColumnName="reaction" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="allusers">
+      <EntityTypeMapping TypeName="JacModel.alluser">
+        <MappingFragment StoreEntitySet="allusers">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="forenames" ColumnName="forenames" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="department" ColumnName="department" />
+          <ScalarProperty Name="jobtitle" ColumnName="jobtitle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bnfcodes">
+      <EntityTypeMapping TypeName="JacModel.bnfcode">
+        <MappingFragment StoreEntitySet="bnfcodes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="lnkdid" ColumnName="lnkdid" />
+          <ScalarProperty Name="c_strength" ColumnName="c_strength" />
+          <ScalarProperty Name="c_bnf_code" ColumnName="c_bnf_code" />
+          <ScalarProperty Name="c_cd" ColumnName="c_cd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="clinicalnotes">
+      <EntityTypeMapping TypeName="JacModel.clinicalnote">
+        <MappingFragment StoreEntitySet="clinicalnotes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="added_date" ColumnName="added_date" />
+          <ScalarProperty Name="reason" ColumnName="reason" />
+          <ScalarProperty Name="F3" ColumnName="F3" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="lnkpid" ColumnName="lnkpid" />
+          <ScalarProperty Name="lnkspell" ColumnName="lnkspell" />
+          <ScalarProperty Name="added_by" ColumnName="added_by" />
+          <ScalarProperty Name="drug_name" ColumnName="drug_name" />
+          <ScalarProperty Name="lnkordid" ColumnName="lnkordid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MedAdmins">
+      <EntityTypeMapping TypeName="JacModel.MedAdmin">
+        <MappingFragment StoreEntitySet="MedAdmins">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="admin_reason" ColumnName="admin_reason" />
+          <ScalarProperty Name="administered_date" ColumnName="administered_date" />
+          <ScalarProperty Name="admin_time" ColumnName="admin_time" />
+          <ScalarProperty Name="charted_date" ColumnName="charted_date" />
+          <ScalarProperty Name="administered_time" ColumnName="administered_time" />
+          <ScalarProperty Name="lnkpid" ColumnName="lnkpid" />
+          <ScalarProperty Name="lnkordid" ColumnName="lnkordid" />
+          <ScalarProperty Name="administrator" ColumnName="administrator" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medicines">
+      <EntityTypeMapping TypeName="JacModel.Medicine">
+        <MappingFragment StoreEntitySet="Medicines">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DrugName" ColumnName="DrugName" />
+          <ScalarProperty Name="Bnfcode" ColumnName="Bnfcode" />
+          <ScalarProperty Name="Route" ColumnName="Route" />
+          <ScalarProperty Name="ExclusionWards" ColumnName="ExclusionWards" />
+          <ScalarProperty Name="RiskFactor" ColumnName="RiskFactor" />
+          <ScalarProperty Name="IsHighRisk" ColumnName="IsHighRisk" />
+          <ScalarProperty Name="IsMediumRisk" ColumnName="IsMediumRisk" />
+          <ScalarProperty Name="POPAANPTA" ColumnName="POPAANPTA" />
+          <ScalarProperty Name="IsVTE" ColumnName="IsVTE" />
+          <ScalarProperty Name="IsCautious" ColumnName="IsCautious" />
+          <ScalarProperty Name="IsMissedDoseNotification" ColumnName="IsMissedDoseNotification" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="patientmeds">
+      <EntityTypeMapping TypeName="JacModel.patientmed">
+        <MappingFragment StoreEntitySet="patientmeds">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="lnkpid" ColumnName="lnkpid" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="lnkspell" ColumnName="lnkspell" />
+          <ScalarProperty Name="drug_description" ColumnName="drug_description" />
+          <ScalarProperty Name="prn" ColumnName="prn" />
+          <ScalarProperty Name="stat" ColumnName="stat" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="frequency_description" ColumnName="frequency_description" />
+          <ScalarProperty Name="freeform_frequency" ColumnName="freeform_frequency" />
+          <ScalarProperty Name="primary_dose" ColumnName="primary_dose" />
+          <ScalarProperty Name="change_start_date" ColumnName="change_start_date" />
+          <ScalarProperty Name="change_start_time" ColumnName="change_start_time" />
+          <ScalarProperty Name="stop_date" ColumnName="stop_date" />
+          <ScalarProperty Name="lnkordid" ColumnName="lnkordid" />
+          <ScalarProperty Name="stop_time" ColumnName="stop_time" />
+          <ScalarProperty Name="route" ColumnName="route" />
+          <ScalarProperty Name="self_administer" ColumnName="self_administer" />
+          <ScalarProperty Name="prescribing_drug_id" ColumnName="prescribing_drug_id" />
+          <ScalarProperty Name="order_type" ColumnName="order_type" />
+          <ScalarProperty Name="suspend_date" ColumnName="suspend_date" />
+          <ScalarProperty Name="suspend_time" ColumnName="suspend_time" />
+          <ScalarProperty Name="resume_date" ColumnName="resume_date" />
+          <ScalarProperty Name="resume_time" ColumnName="resume_time" />
+          <ScalarProperty Name="suspend_reason" ColumnName="suspend_reason" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="patients">
+      <EntityTypeMapping TypeName="JacModel.patient">
+        <MappingFragment StoreEntitySet="patients">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="hospital_no" ColumnName="hospital_no" />
+          <ScalarProperty Name="ward" ColumnName="ward" />
+          <ScalarProperty Name="group_code" ColumnName="group_code" />
+          <ScalarProperty Name="lnkpid" ColumnName="lnkpid" />
+          <ScalarProperty Name="current_spell" ColumnName="current_spell" />
+          <ScalarProperty Name="forenames" ColumnName="forenames" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schedulers">
+      <EntityTypeMapping TypeName="JacModel.Scheduler">
+        <MappingFragment StoreEntitySet="Scheduler">
+          <ScalarProperty Name="SchedulerID" ColumnName="SchedulerID" />
+          <ScalarProperty Name="InspectorID" ColumnName="InspectorID" />
+          <ScalarProperty Name="ScheduleDate" ColumnName="ScheduleDate" />
+          <ScalarProperty Name="ScheduleTime" ColumnName="ScheduleTime" />
+          <ScalarProperty Name="ScheduleTitle" ColumnName="ScheduleTitle" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SomeImportantKey" ColumnName="SomeImportantKey" />
+          <ScalarProperty Name="StatusENUM" ColumnName="StatusENUM" />
+          <ScalarProperty Name="AppointmentLength" ColumnName="AppointmentLength" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="specialconsiderations">
+      <EntityTypeMapping TypeName="JacModel.specialconsideration">
+        <MappingFragment StoreEntitySet="specialconsideration">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="drug_speccon" ColumnName="drug_speccon" />
+          <ScalarProperty Name="lnkdid" ColumnName="lnkdid" />
+          <ScalarProperty Name="piece_no" ColumnName="piece_no" />
+          <ScalarProperty Name="speccon_description" ColumnName="speccon_description" />
+          <ScalarProperty Name="drug_basic_common" ColumnName="drug_basic_common" />
+          <ScalarProperty Name="lnkdid1" ColumnName="lnkdid1" />
+          <ScalarProperty Name="c_drugname" ColumnName="c_drugname" />
+          <ScalarProperty Name="c_strength" ColumnName="c_strength" />
+          <ScalarProperty Name="c_form" ColumnName="c_form" />
+          <ScalarProperty Name="c_bnf_code" ColumnName="c_bnf_code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="superusers">
+      <EntityTypeMapping TypeName="JacModel.superuser">
+        <MappingFragment StoreEntitySet="superusers">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="forenames" ColumnName="forenames" />
+          <ScalarProperty Name="UltimateUser" ColumnName="UltimateUser" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="verifieds">
+      <EntityTypeMapping TypeName="JacModel.verified">
+        <MappingFragment StoreEntitySet="verified">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="verified_by" ColumnName="verified_by" />
+          <ScalarProperty Name="verify_date" ColumnName="verify_date" />
+          <ScalarProperty Name="verify_time" ColumnName="verify_time" />
+          <ScalarProperty Name="lnkordid" ColumnName="lnkordid" />
+          <ScalarProperty Name="lnkpid" ColumnName="lnkpid" />
+          <ScalarProperty Name="change_start_date" ColumnName="change_start_date" />
+          <ScalarProperty Name="change_start_time" ColumnName="change_start_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Wards">
+      <EntityTypeMapping TypeName="JacModel.Ward">
+        <MappingFragment StoreEntitySet="Wards">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="WardName" ColumnName="WardName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wardstocks">
+      <EntityTypeMapping TypeName="JacModel.wardstock">
+        <MappingFragment StoreEntitySet="wardstock">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="lnkdid" ColumnName="lnkdid" />
+          <ScalarProperty Name="costcentre" ColumnName="costcentre" />
+          <ScalarProperty Name="drugfull" ColumnName="drugfull" />
+          <ScalarProperty Name="drug_form" ColumnName="drug_form" />
+          <ScalarProperty Name="drug_name" ColumnName="drug_name" />
+          <ScalarProperty Name="drug_packsize" ColumnName="drug_packsize" />
+          <ScalarProperty Name="drug_strength" ColumnName="drug_strength" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetInpatientOrder" FunctionName="JacModel.Store.GetInpatientOrder">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JacModel.GetInpatientOrder_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="drug_description" ColumnName="drug_description" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="forenames" ColumnName="forenames" />
+          <ScalarProperty Name="hospital_no" ColumnName="hospital_no" />
+          <ScalarProperty Name="frequency_description" ColumnName="frequency_description" />
+          <ScalarProperty Name="frequency_code" ColumnName="frequency_code" />
+          <ScalarProperty Name="ward" ColumnName="ward" />
+          <ScalarProperty Name="discontinued_by" ColumnName="discontinued_by" />
+          <ScalarProperty Name="order_type" ColumnName="order_type" />
+          <ScalarProperty Name="secondary_dose" ColumnName="secondary_dose" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="primary_dose_description" ColumnName="primary_dose_description" />
+          <ScalarProperty Name="primary_dose" ColumnName="primary_dose" />
+          <ScalarProperty Name="lnkpid" ColumnName="lnkpid" />
+          <ScalarProperty Name="current_spell" ColumnName="current_spell" />
+          <ScalarProperty Name="prn" ColumnName="prn" />
+          <ScalarProperty Name="stop_date" ColumnName="stop_date" />
+          <ScalarProperty Name="stop_days_doses" ColumnName="stop_days_doses" />
+          <ScalarProperty Name="stop_days_doses_flag" ColumnName="stop_days_doses_flag" />
+          <ScalarProperty Name="lnkpid1" ColumnName="lnkpid1" />
+          <ScalarProperty Name="route" ColumnName="route" />
+          <ScalarProperty Name="stat" ColumnName="stat" />
+          <ScalarProperty Name="stop_date1" ColumnName="stop_date1" />
+          <ScalarProperty Name="prescribing_drug_id" ColumnName="prescribing_drug_id" />
+          <ScalarProperty Name="lnkordid" ColumnName="lnkordid" />
+          <ScalarProperty Name="lnkpid2" ColumnName="lnkpid2" />
+          <ScalarProperty Name="c_alt_dose" ColumnName="c_alt_dose" />
+          <ScalarProperty Name="c_bulk" ColumnName="c_bulk" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetMedicine" FunctionName="JacModel.Store.GetMedicine">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JacModel.GetMedicine_Result">
+          <ScalarProperty Name="lnkpid" ColumnName="lnkpid" />
+          <ScalarProperty Name="forenames" ColumnName="forenames" />
+          <ScalarProperty Name="Medicine_Output" ColumnName="Medicine_Output" />
+          <ScalarProperty Name="Follow_Output" ColumnName="Follow_Output" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WardStockList" FunctionName="JacModel.Store.WardStockList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="JacModel.WardStockList_Result">
+          <ScalarProperty Name="lnkdid" ColumnName="lnkdid" />
+          <ScalarProperty Name="costcentre" ColumnName="costcentre" />
+          <ScalarProperty Name="drugfull" ColumnName="drugfull" />
+          <ScalarProperty Name="drug_form" ColumnName="drug_form" />
+          <ScalarProperty Name="drug_name" ColumnName="drug_name" />
+          <ScalarProperty Name="drug_packsize" ColumnName="drug_packsize" />
+          <ScalarProperty Name="drug_strength" ColumnName="drug_strength" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="PMBs">
+      <EntityTypeMapping TypeName="JacModel.PMB">
+        <MappingFragment StoreEntitySet="PMB">
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SenderID" ColumnName="SenderID" />
+          <ScalarProperty Name="Msg" ColumnName="Msg" />
+          <ScalarProperty Name="ReceiverID" ColumnName="ReceiverID" />
+          <ScalarProperty Name="MsgID" ColumnName="MsgID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GuidelineManagements">
+      <EntityTypeMapping TypeName="JacModel.GuidelineManagement">
+        <MappingFragment StoreEntitySet="GuidelineManagement">
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="GuidelineLink" ColumnName="GuidelineLink" />
+          <ScalarProperty Name="GuidelineName" ColumnName="GuidelineName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News">
+      <EntityTypeMapping TypeName="JacModel.News">
+        <MappingFragment StoreEntitySet="News">
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="NewsDate" ColumnName="NewsDate" />
+          <ScalarProperty Name="NewsImagePath" ColumnName="NewsImagePath" />
+          <ScalarProperty Name="NewsBody" ColumnName="NewsBody" />
+          <ScalarProperty Name="NewsHead" ColumnName="NewsHead" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

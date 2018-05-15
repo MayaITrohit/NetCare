@@ -1,0 +1,1085 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="JacModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="actualprescriptionmeds">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="drug_description" Type="nvarchar" MaxLength="255" />
+          <Property Name="surname" Type="nvarchar" MaxLength="255" />
+          <Property Name="forenames" Type="nvarchar" MaxLength="255" />
+          <Property Name="hospital_no" Type="float" />
+          <Property Name="frequency_description" Type="nvarchar" MaxLength="255" />
+          <Property Name="frequency_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="ward" Type="nvarchar" MaxLength="255" />
+          <Property Name="discontinued_by" Type="nvarchar" MaxLength="255" />
+          <Property Name="ward_stock" Type="nvarchar" MaxLength="255" />
+          <Property Name="order_type" Type="nvarchar" MaxLength="255" />
+          <Property Name="secondary_dose" Type="float" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" />
+          <Property Name="primary_dose_description" Type="nvarchar" MaxLength="255" />
+          <Property Name="primary_dose" Type="float" />
+          <Property Name="lnkpid" Type="nvarchar" MaxLength="255" />
+          <Property Name="current_spell" Type="float" />
+          <Property Name="prn" Type="nvarchar" MaxLength="255" />
+          <Property Name="stop_date" Type="nvarchar" MaxLength="255" />
+          <Property Name="stop_days_doses" Type="nvarchar" MaxLength="255" />
+          <Property Name="stop_days_doses_flag" Type="nvarchar" MaxLength="255" />
+          <Property Name="change_start_date" Type="datetime" />
+          <Property Name="change_start_time" Type="datetime" />
+          <Property Name="lnkordid" Type="float" />
+          <Property Name="route" Type="nvarchar" MaxLength="255" />
+          <Property Name="stat" Type="nvarchar" MaxLength="255" />
+          <Property Name="stop_date1" Type="nvarchar" MaxLength="255" />
+          <Property Name="prescribing_drug_id" Type="nvarchar" MaxLength="255" />
+          <Property Name="lnkordid1" Type="float" />
+          <Property Name="group_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="c_alt_dose" Type="nvarchar" MaxLength="255" />
+          <Property Name="c_bulk" Type="float" />
+          <Property Name="suspend_date" Type="datetime" />
+          <Property Name="suspend_time" Type="datetime" />
+          <Property Name="resume_date" Type="nvarchar" MaxLength="255" />
+          <Property Name="resume_time" Type="nvarchar" MaxLength="255" />
+          <Property Name="suspend_reason" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="admissiondetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="start_date" Type="datetime" />
+          <Property Name="start_time" Type="datetime" />
+          <Property Name="end_date" Type="nvarchar" MaxLength="255" />
+          <Property Name="end_time" Type="nvarchar" MaxLength="255" />
+          <Property Name="lnkpid" Type="nvarchar" MaxLength="255" />
+          <Property Name="consultant" Type="nvarchar" MaxLength="255" />
+          <Property Name="lnkspell" Type="float" />
+        </EntityType>
+        <EntityType Name="allergies">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lnkpid" Type="nvarchar" MaxLength="255" />
+          <Property Name="allergy_description" Type="nvarchar" MaxLength="255" />
+          <Property Name="reaction" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="allusers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="255" />
+          <Property Name="password" Type="nvarchar" MaxLength="255" />
+          <Property Name="surname" Type="nvarchar" MaxLength="255" />
+          <Property Name="forenames" Type="nvarchar" MaxLength="255" />
+          <Property Name="title" Type="nvarchar" MaxLength="255" />
+          <Property Name="department" Type="nvarchar" MaxLength="255" />
+          <Property Name="jobtitle" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="bnfcodes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lnkdid" Type="nvarchar" MaxLength="255" />
+          <Property Name="c_strength" Type="nvarchar" MaxLength="255" />
+          <Property Name="c_bnf_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="c_cd" Type="float" />
+        </EntityType>
+        <EntityType Name="clinicalnotes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="added_date" Type="datetime" />
+          <Property Name="reason" Type="nvarchar" MaxLength="255" />
+          <Property Name="F3" Type="nvarchar(max)" />
+          <Property Name="title" Type="nvarchar" MaxLength="255" />
+          <Property Name="lnkpid" Type="nvarchar" MaxLength="255" />
+          <Property Name="lnkspell" Type="float" />
+          <Property Name="added_by" Type="nvarchar" MaxLength="255" />
+          <Property Name="drug_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="lnkordid" Type="float" />
+        </EntityType>
+        <EntityType Name="GuidelineManagement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GuidelineName" Type="nvarchar" MaxLength="100" />
+          <Property Name="GuidelineLink" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MedAdmins">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="admin_reason" Type="varchar" MaxLength="35" />
+          <Property Name="administered_date" Type="date" />
+          <Property Name="admin_time" Type="time" Precision="7" />
+          <Property Name="charted_date" Type="date" />
+          <Property Name="administered_time" Type="time" Precision="7" />
+          <Property Name="lnkpid" Type="varchar" MaxLength="10" />
+          <Property Name="lnkordid" Type="numeric" Precision="15" Scale="0" />
+          <Property Name="administrator" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Medicines">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DrugName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Bnfcode" Type="nvarchar" MaxLength="200" />
+          <Property Name="Route" Type="nvarchar" MaxLength="200" />
+          <Property Name="ExclusionWards" Type="nvarchar" MaxLength="200" />
+          <Property Name="RiskFactor" Type="int" Nullable="false" />
+          <Property Name="IsHighRisk" Type="bit" Nullable="false" />
+          <Property Name="IsMediumRisk" Type="bit" Nullable="false" />
+          <Property Name="POPAANPTA" Type="bit" Nullable="false" />
+          <Property Name="IsVTE" Type="bit" Nullable="false" />
+          <Property Name="IsCautious" Type="bit" Nullable="false" />
+          <Property Name="IsMissedDoseNotification" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NewsHead" Type="varchar" MaxLength="512" />
+          <Property Name="NewsBody" Type="text" />
+          <Property Name="NewsImagePath" Type="varchar" MaxLength="255" />
+          <Property Name="NewsDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="LastUpdate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="patientmeds">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lnkpid" Type="nvarchar" MaxLength="255" />
+          <Property Name="start_date" Type="datetime" />
+          <Property Name="lnkspell" Type="float" />
+          <Property Name="drug_description" Type="nvarchar" MaxLength="255" />
+          <Property Name="prn" Type="nvarchar" MaxLength="255" />
+          <Property Name="stat" Type="nvarchar" MaxLength="255" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" />
+          <Property Name="frequency_description" Type="nvarchar" MaxLength="255" />
+          <Property Name="freeform_frequency" Type="nvarchar" MaxLength="255" />
+          <Property Name="primary_dose" Type="float" />
+          <Property Name="change_start_date" Type="datetime" />
+          <Property Name="change_start_time" Type="datetime" />
+          <Property Name="stop_date" Type="nvarchar" MaxLength="255" />
+          <Property Name="lnkordid" Type="float" />
+          <Property Name="stop_time" Type="nvarchar" MaxLength="255" />
+          <Property Name="route" Type="nvarchar" MaxLength="255" />
+          <Property Name="self_administer" Type="nvarchar" MaxLength="255" />
+          <Property Name="prescribing_drug_id" Type="nvarchar" MaxLength="255" />
+          <Property Name="order_type" Type="nvarchar" MaxLength="255" />
+          <Property Name="suspend_date" Type="datetime" />
+          <Property Name="suspend_time" Type="datetime" />
+          <Property Name="resume_date" Type="datetime" />
+          <Property Name="resume_time" Type="datetime" />
+          <Property Name="suspend_reason" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="patients">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="surname" Type="nvarchar" MaxLength="255" />
+          <Property Name="hospital_no" Type="float" />
+          <Property Name="ward" Type="nvarchar" MaxLength="255" />
+          <Property Name="group_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="lnkpid" Type="nvarchar" MaxLength="255" />
+          <Property Name="current_spell" Type="float" />
+          <Property Name="forenames" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="PMB">
+          <Key>
+            <PropertyRef Name="MsgID" />
+          </Key>
+          <Property Name="MsgID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReceiverID" Type="int" />
+          <Property Name="Msg" Type="varchar" MaxLength="7000" />
+          <Property Name="SenderID" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="DateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Scheduler">
+          <Key>
+            <PropertyRef Name="SchedulerID" />
+          </Key>
+          <Property Name="SchedulerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InspectorID" Type="int" />
+          <Property Name="ScheduleDate" Type="datetime" />
+          <Property Name="ScheduleTime" Type="datetime" />
+          <Property Name="ScheduleTitle" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="SomeImportantKey" Type="int" />
+          <Property Name="StatusENUM" Type="int" />
+          <Property Name="AppointmentLength" Type="int" />
+        </EntityType>
+        <EntityType Name="specialconsideration">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="drug_speccon" Type="nvarchar" MaxLength="255" />
+          <Property Name="lnkdid" Type="nvarchar" MaxLength="255" />
+          <Property Name="piece_no" Type="float" />
+          <Property Name="speccon_description" Type="nvarchar" MaxLength="255" />
+          <Property Name="drug_basic_common" Type="nvarchar" MaxLength="255" />
+          <Property Name="lnkdid1" Type="nvarchar" MaxLength="255" />
+          <Property Name="c_drugname" Type="nvarchar" MaxLength="255" />
+          <Property Name="c_strength" Type="nvarchar" MaxLength="255" />
+          <Property Name="c_form" Type="nvarchar" MaxLength="255" />
+          <Property Name="c_bnf_code" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="superusers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="255" />
+          <Property Name="password" Type="nvarchar" MaxLength="255" />
+          <Property Name="surname" Type="nvarchar" MaxLength="255" />
+          <Property Name="forenames" Type="nvarchar" MaxLength="255" />
+          <Property Name="UltimateUser" Type="nvarchar" MaxLength="255" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="verified">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="255" />
+          <Property Name="verified_by" Type="nvarchar" MaxLength="255" />
+          <Property Name="verify_date" Type="datetime" />
+          <Property Name="verify_time" Type="datetime" />
+          <Property Name="lnkordid" Type="float" />
+          <Property Name="lnkpid" Type="nvarchar" MaxLength="255" />
+          <Property Name="change_start_date" Type="datetime" />
+          <Property Name="change_start_time" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Wards">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WardName" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="wardstock">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lnkdid" Type="nvarchar" MaxLength="255" />
+          <Property Name="costcentre" Type="nvarchar" MaxLength="255" />
+          <Property Name="drugfull" Type="nvarchar" MaxLength="255" />
+          <Property Name="drug_form" Type="nvarchar" MaxLength="255" />
+          <Property Name="drug_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="drug_packsize" Type="nvarchar" MaxLength="255" />
+          <Property Name="drug_strength" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <Function Name="GetInpatientOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="lnkpid" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetMedicine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ward" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="WardStockList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WardName" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="JacModelStoreContainer">
+          <EntitySet Name="actualprescriptionmeds" EntityType="Self.actualprescriptionmeds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="admissiondetails" EntityType="Self.admissiondetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="allergies" EntityType="Self.allergies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="allusers" EntityType="Self.allusers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bnfcodes" EntityType="Self.bnfcodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="clinicalnotes" EntityType="Self.clinicalnotes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GuidelineManagement" EntityType="Self.GuidelineManagement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedAdmins" EntityType="Self.MedAdmins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medicines" EntityType="Self.Medicines" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="patientmeds" EntityType="Self.patientmeds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="patients" EntityType="Self.patients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PMB" EntityType="Self.PMB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Scheduler" EntityType="Self.Scheduler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="specialconsideration" EntityType="Self.specialconsideration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="superusers" EntityType="Self.superusers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="verified" EntityType="Self.verified" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wards" EntityType="Self.Wards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="wardstock" EntityType="Self.wardstock" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="JacModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="actualprescriptionmed">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="drug_description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="surname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="forenames" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hospital_no" Type="Double" />
+          <Property Name="frequency_description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="frequency_code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ward" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="discontinued_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ward_stock" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="order_type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="secondary_dose" Type="Double" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="primary_dose_description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="primary_dose" Type="Double" />
+          <Property Name="lnkpid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="current_spell" Type="Double" />
+          <Property Name="prn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="stop_date" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="stop_days_doses" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="stop_days_doses_flag" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="change_start_date" Type="DateTime" Precision="3" />
+          <Property Name="change_start_time" Type="DateTime" Precision="3" />
+          <Property Name="lnkordid" Type="Double" />
+          <Property Name="route" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="stat" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="stop_date1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="prescribing_drug_id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lnkordid1" Type="Double" />
+          <Property Name="group_code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="c_alt_dose" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="c_bulk" Type="Double" />
+          <Property Name="suspend_date" Type="DateTime" Precision="3" />
+          <Property Name="suspend_time" Type="DateTime" Precision="3" />
+          <Property Name="resume_date" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="resume_time" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="suspend_reason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="admissiondetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="start_date" Type="DateTime" Precision="3" />
+          <Property Name="start_time" Type="DateTime" Precision="3" />
+          <Property Name="end_date" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="end_time" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lnkpid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="consultant" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lnkspell" Type="Double" />
+        </EntityType>
+        <EntityType Name="allergy">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lnkpid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="allergy_description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="reaction" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="alluser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="surname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="forenames" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="department" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="jobtitle" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="bnfcode">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lnkdid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="c_strength" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="c_bnf_code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="c_cd" Type="Double" />
+        </EntityType>
+        <EntityType Name="clinicalnote">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="added_date" Type="DateTime" Precision="3" />
+          <Property Name="reason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="F3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lnkpid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lnkspell" Type="Double" />
+          <Property Name="added_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="drug_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lnkordid" Type="Double" />
+        </EntityType>
+        <EntityType Name="MedAdmin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="admin_reason" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="administered_date" Type="DateTime" Precision="0" />
+          <Property Name="admin_time" Type="Time" Precision="7" />
+          <Property Name="charted_date" Type="DateTime" Precision="0" />
+          <Property Name="administered_time" Type="Time" Precision="7" />
+          <Property Name="lnkpid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="lnkordid" Type="Decimal" Precision="15" Scale="0" />
+          <Property Name="administrator" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Medicine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DrugName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Bnfcode" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Route" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ExclusionWards" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="RiskFactor" Type="Int32" Nullable="false" />
+          <Property Name="IsHighRisk" Type="Boolean" Nullable="false" />
+          <Property Name="IsMediumRisk" Type="Boolean" Nullable="false" />
+          <Property Name="POPAANPTA" Type="Boolean" Nullable="false" />
+          <Property Name="IsVTE" Type="Boolean" Nullable="false" />
+          <Property Name="IsCautious" Type="Boolean" Nullable="false" />
+          <Property Name="IsMissedDoseNotification" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="patientmed">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lnkpid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="start_date" Type="DateTime" Precision="3" />
+          <Property Name="lnkspell" Type="Double" />
+          <Property Name="drug_description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="prn" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="stat" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="frequency_description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="freeform_frequency" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="primary_dose" Type="Double" />
+          <Property Name="change_start_date" Type="DateTime" Precision="3" />
+          <Property Name="change_start_time" Type="DateTime" Precision="3" />
+          <Property Name="stop_date" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lnkordid" Type="Double" />
+          <Property Name="stop_time" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="route" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="self_administer" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="prescribing_drug_id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="order_type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="suspend_date" Type="DateTime" Precision="3" />
+          <Property Name="suspend_time" Type="DateTime" Precision="3" />
+          <Property Name="resume_date" Type="DateTime" Precision="3" />
+          <Property Name="resume_time" Type="DateTime" Precision="3" />
+          <Property Name="suspend_reason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="patient">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="surname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="hospital_no" Type="Double" />
+          <Property Name="ward" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="group_code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lnkpid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="current_spell" Type="Double" />
+          <Property Name="forenames" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Scheduler">
+          <Key>
+            <PropertyRef Name="SchedulerID" />
+          </Key>
+          <Property Name="SchedulerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InspectorID" Type="Int32" />
+          <Property Name="ScheduleDate" Type="DateTime" Precision="3" />
+          <Property Name="ScheduleTime" Type="DateTime" Precision="3" />
+          <Property Name="ScheduleTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="SomeImportantKey" Type="Int32" />
+          <Property Name="StatusENUM" Type="Int32" />
+          <Property Name="AppointmentLength" Type="Int32" />
+        </EntityType>
+        <EntityType Name="specialconsideration">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="drug_speccon" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lnkdid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="piece_no" Type="Double" />
+          <Property Name="speccon_description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="drug_basic_common" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lnkdid1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="c_drugname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="c_strength" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="c_form" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="c_bnf_code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="superuser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="surname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="forenames" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="UltimateUser" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="verified">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="verified_by" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="verify_date" Type="DateTime" Precision="3" />
+          <Property Name="verify_time" Type="DateTime" Precision="3" />
+          <Property Name="lnkordid" Type="Double" />
+          <Property Name="lnkpid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="change_start_date" Type="DateTime" Precision="3" />
+          <Property Name="change_start_time" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Ward">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WardName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="wardstock">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lnkdid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="costcentre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="drugfull" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="drug_form" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="drug_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="drug_packsize" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="drug_strength" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="JacEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="actualprescriptionmeds" EntityType="Self.actualprescriptionmed" />
+          <EntitySet Name="admissiondetails" EntityType="Self.admissiondetail" />
+          <EntitySet Name="allergies" EntityType="Self.allergy" />
+          <EntitySet Name="allusers" EntityType="Self.alluser" />
+          <EntitySet Name="bnfcodes" EntityType="Self.bnfcode" />
+          <EntitySet Name="clinicalnotes" EntityType="Self.clinicalnote" />
+          <EntitySet Name="MedAdmins" EntityType="Self.MedAdmin" />
+          <EntitySet Name="Medicines" EntityType="Self.Medicine" />
+          <EntitySet Name="patientmeds" EntityType="Self.patientmed" />
+          <EntitySet Name="patients" EntityType="Self.patient" />
+          <EntitySet Name="Schedulers" EntityType="Self.Scheduler" />
+          <EntitySet Name="specialconsiderations" EntityType="Self.specialconsideration" />
+          <EntitySet Name="superusers" EntityType="Self.superuser" />
+          <EntitySet Name="verifieds" EntityType="Self.verified" />
+          <EntitySet Name="Wards" EntityType="Self.Ward" />
+          <EntitySet Name="wardstocks" EntityType="Self.wardstock" />
+          <FunctionImport Name="GetInpatientOrder" ReturnType="Collection(JacModel.GetInpatientOrder_Result)">
+          <Parameter Name="lnkpid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetMedicine" ReturnType="Collection(JacModel.GetMedicine_Result)">
+          <Parameter Name="ward" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="WardStockList" ReturnType="Collection(JacModel.WardStockList_Result)">
+          <Parameter Name="WardName" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="PMBs" EntityType="JacModel.PMB" />
+          <EntitySet Name="GuidelineManagements" EntityType="JacModel.GuidelineManagement" />
+          <EntitySet Name="News" EntityType="JacModel.News" />
+        </EntityContainer>
+        <ComplexType Name="GetInpatientOrder_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="drug_description" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="surname" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="forenames" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="hospital_no" Nullable="true" />
+          <Property Type="String" Name="frequency_description" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="frequency_code" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="ward" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="discontinued_by" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="order_type" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="secondary_dose" Nullable="true" />
+          <Property Type="String" Name="status" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="primary_dose_description" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="primary_dose" Nullable="true" />
+          <Property Type="String" Name="lnkpid" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="current_spell" Nullable="true" />
+          <Property Type="String" Name="prn" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="stop_date" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="stop_days_doses" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="stop_days_doses_flag" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="lnkpid1" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="route" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="stat" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="stop_date1" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="prescribing_drug_id" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="lnkordid" Nullable="true" />
+          <Property Type="String" Name="lnkpid2" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="c_alt_dose" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="c_bulk" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetMedicine_Result">
+          <Property Type="String" Name="lnkpid" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="forenames" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Medicine_Output" Nullable="true" />
+          <Property Type="String" Name="Follow_Output" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="WardStockList_Result">
+          <Property Type="String" Name="lnkdid" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="costcentre" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="drugfull" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="drug_form" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="drug_name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="drug_packsize" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="drug_strength" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <EntityType Name="PMB">
+          <Key>
+            <PropertyRef Name="MsgID" />
+          </Key>
+          <Property Name="MsgID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ReceiverID" Type="Int32" />
+          <Property Name="Msg" Type="String" MaxLength="7000" FixedLength="false" Unicode="false" />
+          <Property Name="SenderID" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="GuidelineManagement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GuidelineName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GuidelineLink" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NewsHead" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="NewsBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NewsImagePath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NewsDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="JacModelStoreContainer" CdmEntityContainer="JacEntities">
+          <EntitySetMapping Name="actualprescriptionmeds">
+            <EntityTypeMapping TypeName="JacModel.actualprescriptionmed">
+              <MappingFragment StoreEntitySet="actualprescriptionmeds">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="drug_description" ColumnName="drug_description" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="forenames" ColumnName="forenames" />
+                <ScalarProperty Name="hospital_no" ColumnName="hospital_no" />
+                <ScalarProperty Name="frequency_description" ColumnName="frequency_description" />
+                <ScalarProperty Name="frequency_code" ColumnName="frequency_code" />
+                <ScalarProperty Name="ward" ColumnName="ward" />
+                <ScalarProperty Name="discontinued_by" ColumnName="discontinued_by" />
+                <ScalarProperty Name="ward_stock" ColumnName="ward_stock" />
+                <ScalarProperty Name="order_type" ColumnName="order_type" />
+                <ScalarProperty Name="secondary_dose" ColumnName="secondary_dose" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="primary_dose_description" ColumnName="primary_dose_description" />
+                <ScalarProperty Name="primary_dose" ColumnName="primary_dose" />
+                <ScalarProperty Name="lnkpid" ColumnName="lnkpid" />
+                <ScalarProperty Name="current_spell" ColumnName="current_spell" />
+                <ScalarProperty Name="prn" ColumnName="prn" />
+                <ScalarProperty Name="stop_date" ColumnName="stop_date" />
+                <ScalarProperty Name="stop_days_doses" ColumnName="stop_days_doses" />
+                <ScalarProperty Name="stop_days_doses_flag" ColumnName="stop_days_doses_flag" />
+                <ScalarProperty Name="change_start_date" ColumnName="change_start_date" />
+                <ScalarProperty Name="change_start_time" ColumnName="change_start_time" />
+                <ScalarProperty Name="lnkordid" ColumnName="lnkordid" />
+                <ScalarProperty Name="route" ColumnName="route" />
+                <ScalarProperty Name="stat" ColumnName="stat" />
+                <ScalarProperty Name="stop_date1" ColumnName="stop_date1" />
+                <ScalarProperty Name="prescribing_drug_id" ColumnName="prescribing_drug_id" />
+                <ScalarProperty Name="lnkordid1" ColumnName="lnkordid1" />
+                <ScalarProperty Name="group_code" ColumnName="group_code" />
+                <ScalarProperty Name="c_alt_dose" ColumnName="c_alt_dose" />
+                <ScalarProperty Name="c_bulk" ColumnName="c_bulk" />
+                <ScalarProperty Name="suspend_date" ColumnName="suspend_date" />
+                <ScalarProperty Name="suspend_time" ColumnName="suspend_time" />
+                <ScalarProperty Name="resume_date" ColumnName="resume_date" />
+                <ScalarProperty Name="resume_time" ColumnName="resume_time" />
+                <ScalarProperty Name="suspend_reason" ColumnName="suspend_reason" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="admissiondetails">
+            <EntityTypeMapping TypeName="JacModel.admissiondetail">
+              <MappingFragment StoreEntitySet="admissiondetails">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="end_time" ColumnName="end_time" />
+                <ScalarProperty Name="lnkpid" ColumnName="lnkpid" />
+                <ScalarProperty Name="consultant" ColumnName="consultant" />
+                <ScalarProperty Name="lnkspell" ColumnName="lnkspell" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="allergies">
+            <EntityTypeMapping TypeName="JacModel.allergy">
+              <MappingFragment StoreEntitySet="allergies">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="lnkpid" ColumnName="lnkpid" />
+                <ScalarProperty Name="allergy_description" ColumnName="allergy_description" />
+                <ScalarProperty Name="reaction" ColumnName="reaction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="allusers">
+            <EntityTypeMapping TypeName="JacModel.alluser">
+              <MappingFragment StoreEntitySet="allusers">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="forenames" ColumnName="forenames" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="jobtitle" ColumnName="jobtitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bnfcodes">
+            <EntityTypeMapping TypeName="JacModel.bnfcode">
+              <MappingFragment StoreEntitySet="bnfcodes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="lnkdid" ColumnName="lnkdid" />
+                <ScalarProperty Name="c_strength" ColumnName="c_strength" />
+                <ScalarProperty Name="c_bnf_code" ColumnName="c_bnf_code" />
+                <ScalarProperty Name="c_cd" ColumnName="c_cd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clinicalnotes">
+            <EntityTypeMapping TypeName="JacModel.clinicalnote">
+              <MappingFragment StoreEntitySet="clinicalnotes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="added_date" ColumnName="added_date" />
+                <ScalarProperty Name="reason" ColumnName="reason" />
+                <ScalarProperty Name="F3" ColumnName="F3" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="lnkpid" ColumnName="lnkpid" />
+                <ScalarProperty Name="lnkspell" ColumnName="lnkspell" />
+                <ScalarProperty Name="added_by" ColumnName="added_by" />
+                <ScalarProperty Name="drug_name" ColumnName="drug_name" />
+                <ScalarProperty Name="lnkordid" ColumnName="lnkordid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedAdmins">
+            <EntityTypeMapping TypeName="JacModel.MedAdmin">
+              <MappingFragment StoreEntitySet="MedAdmins">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="admin_reason" ColumnName="admin_reason" />
+                <ScalarProperty Name="administered_date" ColumnName="administered_date" />
+                <ScalarProperty Name="admin_time" ColumnName="admin_time" />
+                <ScalarProperty Name="charted_date" ColumnName="charted_date" />
+                <ScalarProperty Name="administered_time" ColumnName="administered_time" />
+                <ScalarProperty Name="lnkpid" ColumnName="lnkpid" />
+                <ScalarProperty Name="lnkordid" ColumnName="lnkordid" />
+                <ScalarProperty Name="administrator" ColumnName="administrator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medicines">
+            <EntityTypeMapping TypeName="JacModel.Medicine">
+              <MappingFragment StoreEntitySet="Medicines">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DrugName" ColumnName="DrugName" />
+                <ScalarProperty Name="Bnfcode" ColumnName="Bnfcode" />
+                <ScalarProperty Name="Route" ColumnName="Route" />
+                <ScalarProperty Name="ExclusionWards" ColumnName="ExclusionWards" />
+                <ScalarProperty Name="RiskFactor" ColumnName="RiskFactor" />
+                <ScalarProperty Name="IsHighRisk" ColumnName="IsHighRisk" />
+                <ScalarProperty Name="IsMediumRisk" ColumnName="IsMediumRisk" />
+                <ScalarProperty Name="POPAANPTA" ColumnName="POPAANPTA" />
+                <ScalarProperty Name="IsVTE" ColumnName="IsVTE" />
+                <ScalarProperty Name="IsCautious" ColumnName="IsCautious" />
+                <ScalarProperty Name="IsMissedDoseNotification" ColumnName="IsMissedDoseNotification" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="patientmeds">
+            <EntityTypeMapping TypeName="JacModel.patientmed">
+              <MappingFragment StoreEntitySet="patientmeds">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="lnkpid" ColumnName="lnkpid" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="lnkspell" ColumnName="lnkspell" />
+                <ScalarProperty Name="drug_description" ColumnName="drug_description" />
+                <ScalarProperty Name="prn" ColumnName="prn" />
+                <ScalarProperty Name="stat" ColumnName="stat" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="frequency_description" ColumnName="frequency_description" />
+                <ScalarProperty Name="freeform_frequency" ColumnName="freeform_frequency" />
+                <ScalarProperty Name="primary_dose" ColumnName="primary_dose" />
+                <ScalarProperty Name="change_start_date" ColumnName="change_start_date" />
+                <ScalarProperty Name="change_start_time" ColumnName="change_start_time" />
+                <ScalarProperty Name="stop_date" ColumnName="stop_date" />
+                <ScalarProperty Name="lnkordid" ColumnName="lnkordid" />
+                <ScalarProperty Name="stop_time" ColumnName="stop_time" />
+                <ScalarProperty Name="route" ColumnName="route" />
+                <ScalarProperty Name="self_administer" ColumnName="self_administer" />
+                <ScalarProperty Name="prescribing_drug_id" ColumnName="prescribing_drug_id" />
+                <ScalarProperty Name="order_type" ColumnName="order_type" />
+                <ScalarProperty Name="suspend_date" ColumnName="suspend_date" />
+                <ScalarProperty Name="suspend_time" ColumnName="suspend_time" />
+                <ScalarProperty Name="resume_date" ColumnName="resume_date" />
+                <ScalarProperty Name="resume_time" ColumnName="resume_time" />
+                <ScalarProperty Name="suspend_reason" ColumnName="suspend_reason" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="patients">
+            <EntityTypeMapping TypeName="JacModel.patient">
+              <MappingFragment StoreEntitySet="patients">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="hospital_no" ColumnName="hospital_no" />
+                <ScalarProperty Name="ward" ColumnName="ward" />
+                <ScalarProperty Name="group_code" ColumnName="group_code" />
+                <ScalarProperty Name="lnkpid" ColumnName="lnkpid" />
+                <ScalarProperty Name="current_spell" ColumnName="current_spell" />
+                <ScalarProperty Name="forenames" ColumnName="forenames" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedulers">
+            <EntityTypeMapping TypeName="JacModel.Scheduler">
+              <MappingFragment StoreEntitySet="Scheduler">
+                <ScalarProperty Name="SchedulerID" ColumnName="SchedulerID" />
+                <ScalarProperty Name="InspectorID" ColumnName="InspectorID" />
+                <ScalarProperty Name="ScheduleDate" ColumnName="ScheduleDate" />
+                <ScalarProperty Name="ScheduleTime" ColumnName="ScheduleTime" />
+                <ScalarProperty Name="ScheduleTitle" ColumnName="ScheduleTitle" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SomeImportantKey" ColumnName="SomeImportantKey" />
+                <ScalarProperty Name="StatusENUM" ColumnName="StatusENUM" />
+                <ScalarProperty Name="AppointmentLength" ColumnName="AppointmentLength" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="specialconsiderations">
+            <EntityTypeMapping TypeName="JacModel.specialconsideration">
+              <MappingFragment StoreEntitySet="specialconsideration">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="drug_speccon" ColumnName="drug_speccon" />
+                <ScalarProperty Name="lnkdid" ColumnName="lnkdid" />
+                <ScalarProperty Name="piece_no" ColumnName="piece_no" />
+                <ScalarProperty Name="speccon_description" ColumnName="speccon_description" />
+                <ScalarProperty Name="drug_basic_common" ColumnName="drug_basic_common" />
+                <ScalarProperty Name="lnkdid1" ColumnName="lnkdid1" />
+                <ScalarProperty Name="c_drugname" ColumnName="c_drugname" />
+                <ScalarProperty Name="c_strength" ColumnName="c_strength" />
+                <ScalarProperty Name="c_form" ColumnName="c_form" />
+                <ScalarProperty Name="c_bnf_code" ColumnName="c_bnf_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="superusers">
+            <EntityTypeMapping TypeName="JacModel.superuser">
+              <MappingFragment StoreEntitySet="superusers">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="forenames" ColumnName="forenames" />
+                <ScalarProperty Name="UltimateUser" ColumnName="UltimateUser" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="verifieds">
+            <EntityTypeMapping TypeName="JacModel.verified">
+              <MappingFragment StoreEntitySet="verified">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="verified_by" ColumnName="verified_by" />
+                <ScalarProperty Name="verify_date" ColumnName="verify_date" />
+                <ScalarProperty Name="verify_time" ColumnName="verify_time" />
+                <ScalarProperty Name="lnkordid" ColumnName="lnkordid" />
+                <ScalarProperty Name="lnkpid" ColumnName="lnkpid" />
+                <ScalarProperty Name="change_start_date" ColumnName="change_start_date" />
+                <ScalarProperty Name="change_start_time" ColumnName="change_start_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wards">
+            <EntityTypeMapping TypeName="JacModel.Ward">
+              <MappingFragment StoreEntitySet="Wards">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="WardName" ColumnName="WardName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wardstocks">
+            <EntityTypeMapping TypeName="JacModel.wardstock">
+              <MappingFragment StoreEntitySet="wardstock">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="lnkdid" ColumnName="lnkdid" />
+                <ScalarProperty Name="costcentre" ColumnName="costcentre" />
+                <ScalarProperty Name="drugfull" ColumnName="drugfull" />
+                <ScalarProperty Name="drug_form" ColumnName="drug_form" />
+                <ScalarProperty Name="drug_name" ColumnName="drug_name" />
+                <ScalarProperty Name="drug_packsize" ColumnName="drug_packsize" />
+                <ScalarProperty Name="drug_strength" ColumnName="drug_strength" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetInpatientOrder" FunctionName="JacModel.Store.GetInpatientOrder">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="JacModel.GetInpatientOrder_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="drug_description" ColumnName="drug_description" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="forenames" ColumnName="forenames" />
+                <ScalarProperty Name="hospital_no" ColumnName="hospital_no" />
+                <ScalarProperty Name="frequency_description" ColumnName="frequency_description" />
+                <ScalarProperty Name="frequency_code" ColumnName="frequency_code" />
+                <ScalarProperty Name="ward" ColumnName="ward" />
+                <ScalarProperty Name="discontinued_by" ColumnName="discontinued_by" />
+                <ScalarProperty Name="order_type" ColumnName="order_type" />
+                <ScalarProperty Name="secondary_dose" ColumnName="secondary_dose" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="primary_dose_description" ColumnName="primary_dose_description" />
+                <ScalarProperty Name="primary_dose" ColumnName="primary_dose" />
+                <ScalarProperty Name="lnkpid" ColumnName="lnkpid" />
+                <ScalarProperty Name="current_spell" ColumnName="current_spell" />
+                <ScalarProperty Name="prn" ColumnName="prn" />
+                <ScalarProperty Name="stop_date" ColumnName="stop_date" />
+                <ScalarProperty Name="stop_days_doses" ColumnName="stop_days_doses" />
+                <ScalarProperty Name="stop_days_doses_flag" ColumnName="stop_days_doses_flag" />
+                <ScalarProperty Name="lnkpid1" ColumnName="lnkpid1" />
+                <ScalarProperty Name="route" ColumnName="route" />
+                <ScalarProperty Name="stat" ColumnName="stat" />
+                <ScalarProperty Name="stop_date1" ColumnName="stop_date1" />
+                <ScalarProperty Name="prescribing_drug_id" ColumnName="prescribing_drug_id" />
+                <ScalarProperty Name="lnkordid" ColumnName="lnkordid" />
+                <ScalarProperty Name="lnkpid2" ColumnName="lnkpid2" />
+                <ScalarProperty Name="c_alt_dose" ColumnName="c_alt_dose" />
+                <ScalarProperty Name="c_bulk" ColumnName="c_bulk" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetMedicine" FunctionName="JacModel.Store.GetMedicine">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="JacModel.GetMedicine_Result">
+                <ScalarProperty Name="lnkpid" ColumnName="lnkpid" />
+                <ScalarProperty Name="forenames" ColumnName="forenames" />
+                <ScalarProperty Name="Medicine_Output" ColumnName="Medicine_Output" />
+                <ScalarProperty Name="Follow_Output" ColumnName="Follow_Output" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="WardStockList" FunctionName="JacModel.Store.WardStockList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="JacModel.WardStockList_Result">
+                <ScalarProperty Name="lnkdid" ColumnName="lnkdid" />
+                <ScalarProperty Name="costcentre" ColumnName="costcentre" />
+                <ScalarProperty Name="drugfull" ColumnName="drugfull" />
+                <ScalarProperty Name="drug_form" ColumnName="drug_form" />
+                <ScalarProperty Name="drug_name" ColumnName="drug_name" />
+                <ScalarProperty Name="drug_packsize" ColumnName="drug_packsize" />
+                <ScalarProperty Name="drug_strength" ColumnName="drug_strength" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="PMBs">
+            <EntityTypeMapping TypeName="JacModel.PMB">
+              <MappingFragment StoreEntitySet="PMB">
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SenderID" ColumnName="SenderID" />
+                <ScalarProperty Name="Msg" ColumnName="Msg" />
+                <ScalarProperty Name="ReceiverID" ColumnName="ReceiverID" />
+                <ScalarProperty Name="MsgID" ColumnName="MsgID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GuidelineManagements">
+            <EntityTypeMapping TypeName="JacModel.GuidelineManagement">
+              <MappingFragment StoreEntitySet="GuidelineManagement">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="GuidelineLink" ColumnName="GuidelineLink" />
+                <ScalarProperty Name="GuidelineName" ColumnName="GuidelineName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="JacModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="NewsDate" ColumnName="NewsDate" />
+                <ScalarProperty Name="NewsImagePath" ColumnName="NewsImagePath" />
+                <ScalarProperty Name="NewsBody" ColumnName="NewsBody" />
+                <ScalarProperty Name="NewsHead" ColumnName="NewsHead" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

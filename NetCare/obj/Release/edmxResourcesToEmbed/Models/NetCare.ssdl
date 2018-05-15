@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JacModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="actualprescriptionmeds">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="drug_description" Type="nvarchar" MaxLength="255" />
+    <Property Name="surname" Type="nvarchar" MaxLength="255" />
+    <Property Name="forenames" Type="nvarchar" MaxLength="255" />
+    <Property Name="hospital_no" Type="float" />
+    <Property Name="frequency_description" Type="nvarchar" MaxLength="255" />
+    <Property Name="frequency_code" Type="nvarchar" MaxLength="255" />
+    <Property Name="ward" Type="nvarchar" MaxLength="255" />
+    <Property Name="discontinued_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="ward_stock" Type="nvarchar" MaxLength="255" />
+    <Property Name="order_type" Type="nvarchar" MaxLength="255" />
+    <Property Name="secondary_dose" Type="float" />
+    <Property Name="status" Type="nvarchar" MaxLength="255" />
+    <Property Name="primary_dose_description" Type="nvarchar" MaxLength="255" />
+    <Property Name="primary_dose" Type="float" />
+    <Property Name="lnkpid" Type="nvarchar" MaxLength="255" />
+    <Property Name="current_spell" Type="float" />
+    <Property Name="prn" Type="nvarchar" MaxLength="255" />
+    <Property Name="stop_date" Type="nvarchar" MaxLength="255" />
+    <Property Name="stop_days_doses" Type="nvarchar" MaxLength="255" />
+    <Property Name="stop_days_doses_flag" Type="nvarchar" MaxLength="255" />
+    <Property Name="change_start_date" Type="datetime" />
+    <Property Name="change_start_time" Type="datetime" />
+    <Property Name="lnkordid" Type="float" />
+    <Property Name="route" Type="nvarchar" MaxLength="255" />
+    <Property Name="stat" Type="nvarchar" MaxLength="255" />
+    <Property Name="stop_date1" Type="nvarchar" MaxLength="255" />
+    <Property Name="prescribing_drug_id" Type="nvarchar" MaxLength="255" />
+    <Property Name="lnkordid1" Type="float" />
+    <Property Name="group_code" Type="nvarchar" MaxLength="255" />
+    <Property Name="c_alt_dose" Type="nvarchar" MaxLength="255" />
+    <Property Name="c_bulk" Type="float" />
+    <Property Name="suspend_date" Type="datetime" />
+    <Property Name="suspend_time" Type="datetime" />
+    <Property Name="resume_date" Type="nvarchar" MaxLength="255" />
+    <Property Name="resume_time" Type="nvarchar" MaxLength="255" />
+    <Property Name="suspend_reason" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="admissiondetails">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="start_date" Type="datetime" />
+    <Property Name="start_time" Type="datetime" />
+    <Property Name="end_date" Type="nvarchar" MaxLength="255" />
+    <Property Name="end_time" Type="nvarchar" MaxLength="255" />
+    <Property Name="lnkpid" Type="nvarchar" MaxLength="255" />
+    <Property Name="consultant" Type="nvarchar" MaxLength="255" />
+    <Property Name="lnkspell" Type="float" />
+  </EntityType>
+  <EntityType Name="allergies">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="lnkpid" Type="nvarchar" MaxLength="255" />
+    <Property Name="allergy_description" Type="nvarchar" MaxLength="255" />
+    <Property Name="reaction" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="allusers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="255" />
+    <Property Name="password" Type="nvarchar" MaxLength="255" />
+    <Property Name="surname" Type="nvarchar" MaxLength="255" />
+    <Property Name="forenames" Type="nvarchar" MaxLength="255" />
+    <Property Name="title" Type="nvarchar" MaxLength="255" />
+    <Property Name="department" Type="nvarchar" MaxLength="255" />
+    <Property Name="jobtitle" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="bnfcodes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="lnkdid" Type="nvarchar" MaxLength="255" />
+    <Property Name="c_strength" Type="nvarchar" MaxLength="255" />
+    <Property Name="c_bnf_code" Type="nvarchar" MaxLength="255" />
+    <Property Name="c_cd" Type="float" />
+  </EntityType>
+  <EntityType Name="clinicalnotes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="added_date" Type="datetime" />
+    <Property Name="reason" Type="nvarchar" MaxLength="255" />
+    <Property Name="F3" Type="nvarchar(max)" />
+    <Property Name="title" Type="nvarchar" MaxLength="255" />
+    <Property Name="lnkpid" Type="nvarchar" MaxLength="255" />
+    <Property Name="lnkspell" Type="float" />
+    <Property Name="added_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="drug_name" Type="nvarchar" MaxLength="255" />
+    <Property Name="lnkordid" Type="float" />
+  </EntityType>
+  <EntityType Name="MedAdmins">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="admin_reason" Type="varchar" MaxLength="35" />
+    <Property Name="administered_date" Type="date" />
+    <Property Name="admin_time" Type="time" Precision="7" />
+    <Property Name="charted_date" Type="date" />
+    <Property Name="administered_time" Type="time" Precision="7" />
+    <Property Name="lnkpid" Type="varchar" MaxLength="10" />
+    <Property Name="lnkordid" Type="numeric" Precision="15" Scale="0" />
+    <Property Name="administrator" Type="varchar" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="Medicines">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DrugName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Bnfcode" Type="nvarchar" MaxLength="200" />
+    <Property Name="Route" Type="nvarchar" MaxLength="200" />
+    <Property Name="ExclusionWards" Type="nvarchar" MaxLength="200" />
+    <Property Name="RiskFactor" Type="int" Nullable="false" />
+    <Property Name="IsHighRisk" Type="bit" Nullable="false" />
+    <Property Name="IsMediumRisk" Type="bit" Nullable="false" />
+    <Property Name="POPAANPTA" Type="bit" Nullable="false" />
+    <Property Name="IsVTE" Type="bit" Nullable="false" />
+    <Property Name="IsCautious" Type="bit" Nullable="false" />
+    <Property Name="IsMissedDoseNotification" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="patientmeds">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="lnkpid" Type="nvarchar" MaxLength="255" />
+    <Property Name="start_date" Type="datetime" />
+    <Property Name="lnkspell" Type="float" />
+    <Property Name="drug_description" Type="nvarchar" MaxLength="255" />
+    <Property Name="prn" Type="nvarchar" MaxLength="255" />
+    <Property Name="stat" Type="nvarchar" MaxLength="255" />
+    <Property Name="status" Type="nvarchar" MaxLength="255" />
+    <Property Name="frequency_description" Type="nvarchar" MaxLength="255" />
+    <Property Name="freeform_frequency" Type="nvarchar" MaxLength="255" />
+    <Property Name="primary_dose" Type="float" />
+    <Property Name="change_start_date" Type="datetime" />
+    <Property Name="change_start_time" Type="datetime" />
+    <Property Name="stop_date" Type="nvarchar" MaxLength="255" />
+    <Property Name="lnkordid" Type="float" />
+    <Property Name="stop_time" Type="nvarchar" MaxLength="255" />
+    <Property Name="route" Type="nvarchar" MaxLength="255" />
+    <Property Name="self_administer" Type="nvarchar" MaxLength="255" />
+    <Property Name="prescribing_drug_id" Type="nvarchar" MaxLength="255" />
+    <Property Name="order_type" Type="nvarchar" MaxLength="255" />
+    <Property Name="suspend_date" Type="datetime" />
+    <Property Name="suspend_time" Type="datetime" />
+    <Property Name="resume_date" Type="datetime" />
+    <Property Name="resume_time" Type="datetime" />
+    <Property Name="suspend_reason" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="patients">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="surname" Type="nvarchar" MaxLength="255" />
+    <Property Name="hospital_no" Type="float" />
+    <Property Name="ward" Type="nvarchar" MaxLength="255" />
+    <Property Name="group_code" Type="nvarchar" MaxLength="255" />
+    <Property Name="lnkpid" Type="nvarchar" MaxLength="255" />
+    <Property Name="current_spell" Type="float" />
+    <Property Name="forenames" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Scheduler">
+    <Key>
+      <PropertyRef Name="SchedulerID" />
+    </Key>
+    <Property Name="SchedulerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InspectorID" Type="int" />
+    <Property Name="ScheduleDate" Type="datetime" />
+    <Property Name="ScheduleTime" Type="datetime" />
+    <Property Name="ScheduleTitle" Type="varchar" MaxLength="50" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="SomeImportantKey" Type="int" />
+    <Property Name="StatusENUM" Type="int" />
+    <Property Name="AppointmentLength" Type="int" />
+  </EntityType>
+  <EntityType Name="specialconsideration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="drug_speccon" Type="nvarchar" MaxLength="255" />
+    <Property Name="lnkdid" Type="nvarchar" MaxLength="255" />
+    <Property Name="piece_no" Type="float" />
+    <Property Name="speccon_description" Type="nvarchar" MaxLength="255" />
+    <Property Name="drug_basic_common" Type="nvarchar" MaxLength="255" />
+    <Property Name="lnkdid1" Type="nvarchar" MaxLength="255" />
+    <Property Name="c_drugname" Type="nvarchar" MaxLength="255" />
+    <Property Name="c_strength" Type="nvarchar" MaxLength="255" />
+    <Property Name="c_form" Type="nvarchar" MaxLength="255" />
+    <Property Name="c_bnf_code" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="superusers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="255" />
+    <Property Name="password" Type="nvarchar" MaxLength="255" />
+    <Property Name="surname" Type="nvarchar" MaxLength="255" />
+    <Property Name="forenames" Type="nvarchar" MaxLength="255" />
+    <Property Name="UltimateUser" Type="nvarchar" MaxLength="255" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="verified">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="status" Type="nvarchar" MaxLength="255" />
+    <Property Name="verified_by" Type="nvarchar" MaxLength="255" />
+    <Property Name="verify_date" Type="datetime" />
+    <Property Name="verify_time" Type="datetime" />
+    <Property Name="lnkordid" Type="float" />
+    <Property Name="lnkpid" Type="nvarchar" MaxLength="255" />
+    <Property Name="change_start_date" Type="datetime" />
+    <Property Name="change_start_time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Wards">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WardName" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="wardstock">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="lnkdid" Type="nvarchar" MaxLength="255" />
+    <Property Name="costcentre" Type="nvarchar" MaxLength="255" />
+    <Property Name="drugfull" Type="nvarchar" MaxLength="255" />
+    <Property Name="drug_form" Type="nvarchar" MaxLength="255" />
+    <Property Name="drug_name" Type="nvarchar" MaxLength="255" />
+    <Property Name="drug_packsize" Type="nvarchar" MaxLength="255" />
+    <Property Name="drug_strength" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <Function Name="GetInpatientOrder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lnkpid" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetMedicine" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ward" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="WardStockList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="WardName" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="JacModelStoreContainer">
+    <EntitySet Name="actualprescriptionmeds" EntityType="Self.actualprescriptionmeds" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="admissiondetails" EntityType="Self.admissiondetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="allergies" EntityType="Self.allergies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="allusers" EntityType="Self.allusers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="bnfcodes" EntityType="Self.bnfcodes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="clinicalnotes" EntityType="Self.clinicalnotes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MedAdmins" EntityType="Self.MedAdmins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Medicines" EntityType="Self.Medicines" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="patientmeds" EntityType="Self.patientmeds" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="patients" EntityType="Self.patients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Scheduler" EntityType="Self.Scheduler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="specialconsideration" EntityType="Self.specialconsideration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="superusers" EntityType="Self.superusers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="verified" EntityType="Self.verified" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Wards" EntityType="Self.Wards" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wardstock" EntityType="Self.wardstock" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,39 @@
+﻿<div id="gridposition" style="width: 100%;">
+    <table id="myAdvancedTable" class="table table-hover">
+        <thead>
+            <tr class="main-tr">
+                <th class="main-th">lnkdid</th>
+                <th class="main-th">Stock / Temp Stock</th>
+                <th class="main-th">Form</th>
+                <th class="main-th">Strength</th>
+                <th class="main-th">Size</th>
+                <th class="main-th">Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.WardstockList != null)
+            {
+            foreach (var item in Model.WardstockList)
+            {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.lnkdid)</td>
+                <td>
+                    @if (item.drugfull == item.drug_name)
+                    {
+                    <text><span class="label label-success">Stock</span></text>
+                    }
+                    else
+                    {
+                    <text><span class="label label-default">Temp Stock</span></text>
+                    }
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.drug_form)</td>
+                <td>@Html.DisplayFor(modelItem => item.drug_strength)</td>
+                <td>@Html.DisplayFor(modelItem => item.drug_packsize)</td>
+                <td>@Html.DisplayFor(modelItem => item.drugfull) </td>
+            </tr>
+            }
+            }
+        </tbody>
+    </table>
+</div>

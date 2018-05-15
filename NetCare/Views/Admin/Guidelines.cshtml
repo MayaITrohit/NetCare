@@ -1,0 +1,94 @@
+﻿@model IEnumerable<NetCare.Models.GuidelineManagement>
+@{
+    ViewBag.Title = "Guidelines";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .my-input-class {
+        padding: 3px 6px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .my-confirm-class {
+        padding: 3px 6px;
+        font-size: 12px;
+        color: white;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 4px;
+        background-color: #337ab7;
+        text-decoration: none;
+    }
+
+    .my-cancel-class {
+        padding: 3px 6px;
+        font-size: 12px;
+        color: white;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 4px;
+        background-color: #a94442;
+        text-decoration: none;
+    }
+
+    .error {
+        border: solid 1px;
+        border-color: #a94442;
+    }
+
+    .destroy-button {
+        padding: 5px 10px 5px 10px;
+        border: 1px blue solid;
+        background-color: lightgray;
+    }
+</style>
+@using (Html.BeginForm("GuidelinesList", "Admin", FormMethod.Post))
+{
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header view-list bus">
+                        <div class="info-page">
+                            <h3 class="box-title">Guidelines</h3>
+                        </div>
+                    </div>
+
+                    <div class="box-body table-responsive no-padding VIEW-LIST">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Guideline Name</th>
+                                    <th>Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => item.GuidelineName)</td>
+                                            <td><a href="@Html.DisplayFor(modelItem => item.GuidelineLink)" target="_blank">@Html.DisplayFor(modelItem => item.GuidelineLink)</a></td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+@section Scripts {
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();
+            $('[data-toggle="tooltip"]').tooltip();        
+        });
+    </script>
+
+}
