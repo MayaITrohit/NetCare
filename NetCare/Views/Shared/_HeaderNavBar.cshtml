@@ -25,6 +25,10 @@
             {
                 <p>Dispensary</p>
             }
+            @if (this.User.IsInRole("Admin"))
+            {
+                <p>Admin</p>
+            }
         </div>
     </div>
     <ul class="sidebar-menu" data-widget="tree">
@@ -57,7 +61,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        @if (this.User.IsInRole("Pharmacist"))
+                        @if (this.User.IsInRole("Pharmacist")|| this.User.IsInRole("Admin"))
                         {
                             if (TempData["WardName"] != null)
                             {
@@ -67,7 +71,7 @@
                                 }
                             }
                         }
-                        @if (this.User.IsInRole("Tech"))
+                        @if (this.User.IsInRole("Tech") || this.User.IsInRole("Admin"))
                         {
                             if (TempData["WardName"] != null)
                             {
@@ -119,7 +123,6 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Admin</a></li>
                     <li><a href="~/Admin/SuperUserList/"><i class="fa fa-circle-o"></i> Super User List</a></li>
                     <li><a href="~/Admin/MedicineList/"><i class="fa fa-circle-o"></i> Medicine List</a></li>
                     <li><a href="~/Admin/GuidelinesList/"><i class="fa fa-circle-o"></i> GuidLines List</a></li>

@@ -480,7 +480,7 @@ namespace NetCare.Controllers
         [HttpGet]
         public ActionResult MedicineList()
         {
-            return View(db.Medicines.ToList());
+            return View(db.Medicines.OrderBy(m=>m.RiskFactor).ToList());
         }
 
         /****************************Update Risk Number under Maintanance Link**********************************/
@@ -607,6 +607,7 @@ namespace NetCare.Controllers
             ViewBag.ward = ward;
             string method = "PharmacistsWardPage/" + ward;
             patient obj = new patient();
+            obj.wardList= db.Wards.ToList();
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://testproject5.info/api/");
@@ -873,5 +874,14 @@ namespace NetCare.Controllers
             return View(obj);
         }
         #endregion Inpatient orders
+
+
+        #region Weekend Worklist
+        public ActionResult Medicine()
+        {
+            return View();
+        }
+
+        #endregion Weekend Worklist
     }
 }

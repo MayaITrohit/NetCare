@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
-     .my-input-class {
+    .my-input-class {
         padding: 3px 6px;
         border: 1px solid #ccc;
         border-radius: 4px;
@@ -43,139 +43,269 @@
         background-color: lightgray;
     }
 </style>
-@using (Html.BeginForm("MedicineList", "Admin", FormMethod.Post))
-{
-    <section class="content">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="box">
-                    <div class="box-header view-list bus">
-                        <div class="info-page">
-                            <h3 class="box-title">Medicine Information</h3>
-                        </div>
-                        <div class="box-tools search-box">                        
-                            <div class="btn btn-info btn-all">
-                                @Html.ActionLink("Add Medicine", "MedicineSave")
+
+    @using (Html.BeginForm("MedicineList", "Admin", FormMethod.Post))
+    {
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header view-list bus">
+                            <div class="info-page">
+                                <h3 class="box-title">Medicine Information</h3>
+                            </div>
+                            <div class="box-tools search-box">
+                                <div class="btn btn-info btn-all">
+                                    @Html.ActionLink("Add Medicine", "MedicineSave")
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    @if (TempData["Message"] != null)
-                    {
-                        <div class="alert alert-success" style="float: none;" role="alert">
-                            <b>@TempData["Message"]</b>
-                        </div>
-                    }
-                    @if (TempData["DeleteMessage"] != null)
-                    {
-                        <div class="alert alert-danger" style="float: none;" role="alert">
-                            <b>@TempData["DeleteMessage"]</b>
-                        </div>
-                    }
-                    @if (TempData["Alert"] != null)
-                    {
-                        <div class="alert alert-danger" style="float: none;" role="alert">
-                            <b>@TempData["Alert"]</b>
-                        </div>
-                    }
+                        @if (TempData["Message"] != null)
+                        {
+                            <div class="alert alert-success" style="float: none;" role="alert">
+                                <b>@TempData["Message"]</b>
+                            </div>
+                        }
+                        @if (TempData["DeleteMessage"] != null)
+                        {
+                            <div class="alert alert-danger" style="float: none;" role="alert">
+                                <b>@TempData["DeleteMessage"]</b>
+                            </div>
+                        }
+                        @if (TempData["Alert"] != null)
+                        {
+                            <div class="alert alert-danger" style="float: none;" role="alert">
+                                <b>@TempData["Alert"]</b>
+                            </div>
+                        }
 
-                    <div class="box-body table-responsive no-padding VIEW-LIST">
-                        <table id="myAdvancedTable" class="table table-hover">
-                            <thead>
-                                <tr class="main-tr">
-                                    <th class="main-th">Drug Name</th>
-                                    <th class="main-th">B N F Code</th>
-                                    <th class="main-th">Route</th>
-                                    <th class="main-th">Risk Number</th>
-                                    <th class="main-th">High Risk Medications</th>
-                                    <th class="main-th">Medium Risk Medications</th>
-                                    <th class="main-th">Ward Exclusion</th>
-                                    <th class="main-th">VTE</th>
-                                    <th class="main-th">Caution Medications</th>
-                                    <th class="main-th">Missed Doses Notification</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if (Model != null)
-                                {
-                                    foreach (var item in Model)
+
+                        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading">
+                                                <div class="panel-title">Risk Number</div>
+                                            </div>
+                                            <input type="hidden" id="Id" />
+                                            <div class="summary">
+                                                <label>Total yes  = </label> <span class="cnt-yes">0</span> <br>
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <label>Question 1</label>
+                                                <select>
+                                                    <option>Select Question 1</option>
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <label>Question 2</label>
+                                                <select>
+                                                    <option>Select Question 2</option>
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <label>Question 3</label>
+                                                <select>
+                                                    <option>Select Question 3</option>
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <label>Question 4</label>
+                                                <select>
+                                                    <option>Select Question 4</option>
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <label>Question 5</label>
+                                                <select>
+                                                    <option>Select Question 5</option>
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <label>Question 6</label>
+                                                <select>
+                                                    <option>Select Question 6</option>
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <label>Question 7</label>
+                                                <select>
+                                                    <option>Select Question 7</option>
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-lg-6">
+                                                <label>Question 8</label>
+                                                <select>
+                                                    <option>Select Question 8</option>
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-lg-12">
+                                                <div class="box-footer">
+                                                    <button id="btnSave" class="btn btn-block btn-warning view-all-1" type="button">Done</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box-body table-responsive no-padding VIEW-LIST">
+                            <table id="myAdvancedTable" class="table table-hover">
+                                <thead>
+                                    <tr class="main-tr">
+                                        <th class="main-th">Drug Name</th>
+                                        <th class="main-th">B N F Code</th>
+                                        <th class="main-th">Route</th>
+                                        <th class="main-th">Risk Number</th>
+                                        <th class="main-th">High Risk Medications</th>
+                                        <th class="main-th">Medium Risk Medications</th>
+                                        <th class="main-th">Ward Exclusion</th>
+                                        <th class="main-th">VTE</th>
+                                        <th class="main-th">Caution Medications</th>
+                                        <th class="main-th">Missed Doses Notification</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null)
                                     {
-                                        <tr>
-                                            <td>@Html.DisplayFor(modelItem => item.DrugName)</td>
-                                            <td>@Html.DisplayFor(modelItem => item.Bnfcode)</td>
-                                            <td>@Html.DisplayFor(modelItem => item.Route)</td>
-                                            <td> <a href="~/Admin/RiskNumberForm/@item.ID" target="_blank">@Html.DisplayFor(modelItem => item.RiskFactor)</a></td>
-                                            <td>
-                                                @if (item.IsHighRisk == true)
-                                                {
-                                                    <text><span class="label label-success">YES</span></text>
-                                                }
-                                                else
-                                                {
-                                                    <text><span class="label label-default">NO</span></text>
-                                                }
-                                            </td>
-                                            <td>
-                                                @if (item.IsMediumRisk == true)
-                                                {
-                                                    <text><span class="label label-success">YES</span></text>
-                                                }
-                                                else
-                                                {
-                                                    <text><span class="label label-default">NO</span></text>
-                                                }
-                                            </td>
-                                            <td>@Html.DisplayFor(modelItem => item.ExclusionWards)</td>
-                                            <td>
-                                                @if (item.IsVTE == true)
-                                                {
-                                                    <text><span class="label label-success">YES</span></text>
-                                                }
-                                                else
-                                                {
-                                                    <text><span class="label label-default">NO</span></text>
-                                                }
-                                            </td>
-                                            <td>
-                                                @if (item.IsCautious == true)
-                                                {
-                                                    <text><span class="label label-success">YES</span></text>
-                                                }
-                                                else
-                                                {
-                                                    <text><span class="label label-default">NO</span></text>
-                                                }
-                                            </td>
-                                            <td>
-                                                @if (item.IsMissedDoseNotification == true)
-                                                {
-                                                    <text><span class="label label-success">YES</span></text>
-                                                }
-                                                else
-                                                {
-                                                    <text><span class="label label-default">NO</span></text>
-                                                }
-                                            </td>
-                                        </tr>
+                                        foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@Html.DisplayFor(modelItem => item.DrugName)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.Bnfcode)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.Route)</td>
+                                                <td><button value="@item.ID" class="btnrisk" type="button" data-toggle="modal" data-target="#login-modal">@Html.DisplayFor(modelItem => item.RiskFactor)</button> @*<a href="~/Admin/RiskNumberForm/@item.ID" target="_blank">@Html.DisplayFor(modelItem => item.RiskFactor)</a>*@</td>
+                                                <td>
+                                                    @if (item.IsHighRisk == true)
+                                                    {
+                                                        <text><span class="label label-success">YES</span></text>
+                                                    }
+                                                    else
+                                                    {
+                                                        <text><span class="label label-default">NO</span></text>
+                                                    }
+                                                </td>
+                                                <td>
+                                                    @if (item.IsMediumRisk == true)
+                                                    {
+                                                        <text><span class="label label-success">YES</span></text>
+                                                    }
+                                                    else
+                                                    {
+                                                        <text><span class="label label-default">NO</span></text>
+                                                    }
+                                                </td>
+                                                <td>@Html.DisplayFor(modelItem => item.ExclusionWards)</td>
+                                                <td>
+                                                    @if (item.IsVTE == true)
+                                                    {
+                                                        <text><span class="label label-success">YES</span></text>
+                                                    }
+                                                    else
+                                                    {
+                                                        <text><span class="label label-default">NO</span></text>
+                                                    }
+                                                </td>
+                                                <td>
+                                                    @if (item.IsCautious == true)
+                                                    {
+                                                        <text><span class="label label-success">YES</span></text>
+                                                    }
+                                                    else
+                                                    {
+                                                        <text><span class="label label-default">NO</span></text>
+                                                    }
+                                                </td>
+                                                <td>
+                                                    @if (item.IsMissedDoseNotification == true)
+                                                    {
+                                                        <text><span class="label label-success">YES</span></text>
+                                                    }
+                                                    else
+                                                    {
+                                                        <text><span class="label label-default">NO</span></text>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
                                     }
-                                }
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-}
-@section Scripts {
-    <script src="https://code.jquery.com/jquery-1.12.2.min.js" integrity="sha256-lZFHibXzMHo3GGeehn1hudTAP3Sc0uKXBXAzHX1sjtk=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-    <script src="http://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-    <script src="~/Scripts/dataTables.cellEdit.js"></script>
-    <script src="~/Scripts/advanced.js"></script>
-    <script>
+        </section>
+    }
+    @section Scripts {
+<script src="https://code.jquery.com/jquery-1.12.2.min.js" integrity="sha256-lZFHibXzMHo3GGeehn1hudTAP3Sc0uKXBXAzHX1sjtk=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+<script src="http://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/dataTables.cellEdit.js"></script>
+<script src="~/Scripts/advanced.js"></script>
+<script>
         $(document).ready(function(){
-            $('[data-toggle="popover"]').popover();
             $('[data-toggle="tooltip"]').tooltip();
         });
-    </script>
+</script>
+
+<script>
+ $(document).ready(function () {
+    $('select').change(function() {
+        // get all selects
+        var allSelects = $('select');
+        // set values count by type
+        var yes = 0;
+        // for each select increase count
+        $.each(allSelects, function(i, s) {
+            // increase count
+            if($(s).val() == 'Yes') { yes++; }
+            });
+        // update count values summary
+        $('.cnt-yes').text(yes);
+     });
+
+
+
+    $(document).on("click", "#btnSave", (function () {
+    debugger
+        var RiskFactor= $('.cnt-yes').text();
+        var ID = $('.btnrisk').val();
+        var viewModel =
+                {
+                    RiskFactor : RiskFactor,
+                    ID : ID,
+                };
+            $.ajax({
+            url: '/Admin/RiskNumberForm/',
+            type: 'POST',
+             dataType: 'json',
+             data: '{ obj: ' + JSON.stringify(viewModel) + '}',
+             contentType: 'application/json; charset=utf-8',
+             success: function (response){
+
+                 }
+            });
+        }));
+    });
+
+</script>
 }

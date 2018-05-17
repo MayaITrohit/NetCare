@@ -5738,6 +5738,9 @@ input.box-all {
 #NewsBody {
     width: 100%;
 }
+.modal-body {
+    overflow: hidden;
+}
 
 /*********************************************List Table CSS**************************************************/
 .dataTables_length {

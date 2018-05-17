@@ -3,15 +3,93 @@
     ViewBag.Title = "Pharmacists Ward Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .form-group .listbox .multiselect-container .multiselect-item multiselect-all a input {
+        width: auto !important;
+    }
 
+    .multiselect-container > li > a > label > input[type="checkbox"] {
+        height: auto;
+        margin-bottom: 5px !important;
+        text-align: right;
+        width: auto !important;
+    }
+
+    .single-services {
+        float: left;
+        width: 100%;
+    }
+
+    .btn {
+        font-weight: 400;
+        text-transform: capitalize;
+    }
+
+    .multiselect-native-select button.multiselect.dropdown-toggle.btn.btn-default {
+        width: 100% !important;
+        text-align: left;
+    }
+
+    .multiselect-native-select .btn-group {
+        width: 100%;
+        text-align: left !important;
+    }
+
+    .multiselect-native-select b.caret {
+        float: right;
+        margin-top: -11px;
+    }
+
+    ul.multiselect-container.dropdown-menu {
+        width: 100%;
+    }
+
+    .multiselect-native-select button.multiselect.dropdown-toggle.btn.btn-default {
+        background: #fff;
+        color: #000;
+        padding: 11px 19px;
+        border: 1px solid #acacac !important;
+        border-radius: 5px;
+    }
+
+
+    .single-services {
+        background: #ffffff none repeat scroll 0 0;
+        border: 1px solid #ccc;
+        border-radius: 7px;
+        margin-bottom: 30px;
+        padding: 15px;
+    }
+
+    .about-us .tabs-main {
+        background: rgba(0, 0, 0, 0) none repeat scroll 0 0 !important;
+    }
+
+
+
+    .multiselect-container.dropdown-menu {
+        height: auto;
+        overflow-x: scroll;
+    }
+    .multiselect-container.dropdown-menu {
+        z-index: 99999999999999;
+        position: relative;
+    }
+</style>
 <section class="content" onload="JavaScript:timedRefresh(180000);">
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header view-list">
                     <div class="info-page">
-                        <button type="button" class="btn btn-block btn-warning view-all-1">INFO PAGE</button>
-                        <h3 class="box-title ">WARD: @ViewBag.ward</h3>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-block btn-warning view-all-1">INFO PAGE</button>
+                            <h3 class="box-title ">WARD: @ViewBag.ward</h3>
+                        </div>
+                        <div class="col-md-6">
+                            @Html.ListBoxFor(model => model.ward, new SelectList(Model.wardList, "ID", "WardName"), new { @class = "listbox" })
+                        </div>
+
                     </div>
                     <div class="all-group-btn">
                         <div class="form-group col-lg-12">
@@ -217,11 +295,11 @@
                                             }
                                             else if (item.Medicine_Output.Contains("Gentamicin"))
                                             {
-                                                <td><img class="check-mark" data-toggle="popover" src="~/images/Alert.png" title="DISPLAY IF DOSE > 450MG"></td>
+                                                <td><img class="check-mark" data-toggle="tooltip" src="~/images/Alert.png" title="DISPLAY IF DOSE > 450MG"></td>
                                             }
                                             else if (item.Medicine_Output.Contains("LONG"))
                                             {
-                                                <td><img class="check-mark" data-toggle="popover" src="~/images/Alert.png" title="CONTINUE"></td>
+                                                <td><img class="check-mark" data-toggle="tooltip" src="~/images/Alert.png" title="CONTINUE"></td>
                                             }
                                             else
                                             {
@@ -254,23 +332,38 @@
     </div>
 </section>
 
-@section Scripts {
-    <script src="https://code.jquery.com/jquery-1.12.2.min.js" integrity="sha256-lZFHibXzMHo3GGeehn1hudTAP3Sc0uKXBXAzHX1sjtk=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-    <script src="~/Scripts/datatables.min.js"></script>
-    <script src="~/Scripts/dataTables.cellEdit.js"></script>
-    <script src="~/Scripts/advanced.js"></script>
-    <script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+
+<link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
+<script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+            $(function () {
+                $('.listbox').multiselect({
+                    includeSelectAllOption: false,
+                    numberDisplayed: 1,
+                    nSelectedText: 'selected',
+                    nonSelectedText: 'None selected'
+
+                });
+            });
+</script>
+
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+<script src="~/Scripts/datatables.min.js"></script>
+<script src="~/Scripts/dataTables.cellEdit.js"></script>
+<script src="~/Scripts/advanced.js"></script>
+<script>
         $(document).ready(function(){
-            $('[data-toggle="popover"]').popover();
             $('[data-toggle="tooltip"]').tooltip();
         });
-    </script>
-    <script type="text/javascript">
+</script>
+<script type="text/javascript">
         function timedRefresh(timeoutPeriod) {
              setTimeout(function() {
               location.reload(true);
           }, timeoutPeriod);
          }
-    </script>
-}
+</script>

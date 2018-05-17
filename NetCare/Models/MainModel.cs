@@ -132,6 +132,7 @@ namespace NetCare.Models
     public class patientTechViewModel
     {
         public string lnkpid { get; set; }
+        public string ward { get; set; }
         public string title { get; set; }
         public string PatientName { get; set; }
         public string Medicine_Output { get; set; }

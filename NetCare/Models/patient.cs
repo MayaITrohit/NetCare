@@ -25,6 +25,7 @@ namespace NetCare.Models
         public List<patient> Patient { get; set; }
         public List<patientmed> PatientMeds { get; set; }
         public List<patientTechViewModel> PatientTech { get; set; }
+        public List<Ward> wardList { get; set; }
     }
 
    
