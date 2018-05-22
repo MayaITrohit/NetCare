@@ -136,6 +136,12 @@ namespace NetCare.Models
         public string title { get; set; }
         public string PatientName { get; set; }
         public string Medicine_Output { get; set; }
+        public string GENT { get; set; }
+        public string VANC { get; set; }
+        public string VTEMed { get; set; }
+        public string CautionMed { get; set; }
+        public string DHX_Status { get; set; }
+        public string Missed_Output { get; set; }
         public string Follow_Output { get; set; }
         public string Screened_Output { get; set; }
         public string Reason_Output { get; set; }

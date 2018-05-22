@@ -303,6 +303,6 @@ D:\Medical\GitNetCare\NetCare\bin\Microsoft.AI.DependencyCollector.xml
 D:\Medical\GitNetCare\NetCare\bin\Microsoft.AI.ServerTelemetryChannel.xml
 D:\Medical\GitNetCare\NetCare\bin\Microsoft.AI.WindowsServer.xml
 D:\Medical\GitNetCare\NetCare\bin\Microsoft.AI.Web.xml
-D:\Medical\GitNetCare\NetCare\obj\Debug\NetCare.csprojResolveAssemblyReference.cache
 D:\Medical\GitNetCare\NetCare\obj\Debug\NetCare.dll
 D:\Medical\GitNetCare\NetCare\obj\Debug\NetCare.pdb
+D:\Medical\GitNetCare\NetCare\obj\Debug\NetCare.csprojResolveAssemblyReference.cache

@@ -33,7 +33,7 @@
                     </div>
 
                     <button type="button" id="btnAddNews" class="btn btn-info btn-all pull-left"><i class="fa fa-fw fa-plus"></i></button>
-                   
+
                     <table id="grid" data-source="@Url.Action("GetNews")"></table>
                     <div class="modal fade" id="newsmodel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog full-width">
@@ -54,6 +54,17 @@
                                         @Html.TextAreaFor(model => model.NewsBody, new { htmlAttributes = new { @class = "form-control", @maxlength = "50 " } })
                                         @Html.ValidationMessageFor(model => model.NewsBody, "", new { @class = "text-danger" })
                                     </div>
+                                    <div class="form-group col-sm-12 col-md-12 col-lg-12">
+                                        <div class="input-group">
+                                            <span class="input-group-btn">
+                                                <span class="btn btn-default btn-file">
+                                                    Upload File(s)<input type="file" name="imgnews" class="form-control" multiple="multiple" id="imgnews">
+                                                </span>
+                                            </span>
+                                            <input type="text" class="form-control" readonly>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -139,6 +150,7 @@
             $("#Id").val("");
             $("#NewsHead").val("");
             $("#NewsBody").val("");
+            $("#imgnews").val("");
             $("#newsmodel").modal("show");
         }
         function Edit(e) {
@@ -157,13 +169,14 @@
                     value.getFullYear();
             }
             else {
-                date = Date.now();
+                date = Date.UTC();
             }
 
             $("#Id").val(e.data.id);
             $("#NewsDate").val(NewsDate);
             $("#NewsHead").val(e.data.record.NewsHead);
             $("#NewsBody").val(e.data.record.NewsBody);
+            $("#imgnews").val("");
             Validate();
             $("#newsmodel").modal("show");
 

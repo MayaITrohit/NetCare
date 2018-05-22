@@ -80,7 +80,7 @@
                         }
 
 
-                        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                        <div class="modal fade" id="riskmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-body">
@@ -192,7 +192,7 @@
                                                 <td>@Html.DisplayFor(modelItem => item.DrugName)</td>
                                                 <td>@Html.DisplayFor(modelItem => item.Bnfcode)</td>
                                                 <td>@Html.DisplayFor(modelItem => item.Route)</td>
-                                                <td><button value="@item.ID" class="btnrisk" type="button" data-toggle="modal" data-target="#login-modal">@Html.DisplayFor(modelItem => item.RiskFactor)</button> @*<a href="~/Admin/RiskNumberForm/@item.ID" target="_blank">@Html.DisplayFor(modelItem => item.RiskFactor)</a>*@</td>
+                                                <td><button value="@item.ID" class="btnrisk" type="button" data-toggle="modal" data-target="#riskmodal">@Html.DisplayFor(modelItem => item.RiskFactor)</button> @*<a href="~/Admin/RiskNumberForm/@item.ID" target="_blank">@Html.DisplayFor(modelItem => item.RiskFactor)</a>*@</td>
                                                 <td>
                                                     @if (item.IsHighRisk == true)
                                                     {
@@ -268,6 +268,7 @@
 </script>
 
 <script>
+
  $(document).ready(function () {
     $('select').change(function() {
         // get all selects
@@ -300,10 +301,13 @@
              dataType: 'json',
              data: '{ obj: ' + JSON.stringify(viewModel) + '}',
              contentType: 'application/json; charset=utf-8',
-             success: function (response){
 
-                 }
-            });
+            })
+                .done(function () {
+                    myAdvancedTable.reload();
+                    $("#success").css("display", "block");
+                    $("#newsmodel").modal("hide");
+                })
         }));
     });
 

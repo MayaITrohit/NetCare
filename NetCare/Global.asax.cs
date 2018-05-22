@@ -67,7 +67,7 @@ namespace NetCare
             if (context.Response.Status.Substring(0, 3).Equals("401"))
             {
                 context.Response.ClearContent();
-                context.Response.Write("<script language='javascript'>" + "self.location='http://localhost:57648';</script>");
+                context.Response.Write("<script language='javascript'>" + "self.location='http://testproject5.info';</script>");
             }
         }
     }

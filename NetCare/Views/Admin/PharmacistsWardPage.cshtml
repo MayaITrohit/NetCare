@@ -71,6 +71,7 @@
         height: auto;
         overflow-x: scroll;
     }
+
     .multiselect-container.dropdown-menu {
         z-index: 99999999999999;
         position: relative;
@@ -82,14 +83,8 @@
             <div class="box">
                 <div class="box-header view-list">
                     <div class="info-page">
-                        <div class="col-md-6">
-                            <button type="button" class="btn btn-block btn-warning view-all-1">INFO PAGE</button>
-                            <h3 class="box-title ">WARD: @ViewBag.ward</h3>
-                        </div>
-                        <div class="col-md-6">
-                            @Html.ListBoxFor(model => model.ward, new SelectList(Model.wardList, "ID", "WardName"), new { @class = "listbox" })
-                        </div>
-
+                        <button type="button" class="btn btn-block btn-warning view-all-1">INFO PAGE</button>
+                        <h3 class="box-title ">WARD: @ViewBag.ward</h3>
                     </div>
                     <div class="all-group-btn">
                         <div class="form-group col-lg-12">
@@ -164,163 +159,72 @@
                                 foreach (var item in Model.PatientTech)
                                 {
                                     <tr>
-                                        <td><img class="check-mark" data-toggle="tooltip" src="~/images/check-mark(1).png"></td> @*Seen Today*@
-                                        <td><a href="~/Admin/MedicationsOrderPage2/@item.lnkpid">@Html.DisplayFor(modelItem => item.PatientName)</a></td>  @*Patient Name*@
-                                        <td style="color:red">re</td>  @*Dhx Status*@
-
-                                        @*Priority Patients*@
-                                        @if (item.Medicine_Output.Contains("METHADONE") || item.Medicine_Output.Contains("SUBOXONE") || item.Medicine_Output.Contains("LITHIUM") || item.Medicine_Output.Contains("CLOZAPINE") || item.Medicine_Output.Contains("AZATHIOPRINE") || item.Medicine_Output.Contains("AZATHIOPRINE") || item.Medicine_Output.Contains("MYCOPHENOLATE") || item.Medicine_Output.Contains("CICLOSPORIN") || item.Medicine_Output.Contains("SIROLIMUS") || item.Medicine_Output.Contains("TACROLIMUS") || item.Medicine_Output.Contains("HYDROCORTISONE") || item.Medicine_Output.Contains("Gentamicin") || item.Medicine_Output.Contains("Vancomycin") || item.Medicine_Output.Contains("Amikacin") || item.Medicine_Output.Contains("Streptomycin") || item.Medicine_Output.Contains("Tobramycin") || item.Medicine_Output.Contains("Tolvaptan") || item.Medicine_Output.Contains("chemotherapy") || item.Medicine_Output.Contains("Methotexate") || item.Medicine_Output.Contains("ANTI-MALARIA") || item.Medicine_Output.Contains("ANTI-RECTROVIRALS") || item.Medicine_Output.Contains("EPILEPTICS") || item.Medicine_Output.Contains("PARKINSONS") || item.Medicine_Output.Contains("FREE FORM FREQUENCY") || item.Medicine_Output.Contains("LONG  INSULIN") || item.Medicine_Output.Contains("INTEMEDIATE  INSULIN") || item.Medicine_Output.Contains("RAPID INSULIN") || item.Medicine_Output.Contains("Nil Reg Meds"))
-                                        {
-                                            <td style="background-color:red" data-toggle="tooltip" title="">@Html.DisplayFor(modelItem => item.Medicine_Output)</td>
-                                        }
-
-                                        @if (item.Medicine_Output.Contains("ANTI-FUNGALS") || item.Medicine_Output.Contains("ANTI-VIRALS") || item.Medicine_Output.Contains("WARFARIN") || item.Medicine_Output.Contains("APIXABAN") || item.Medicine_Output.Contains("") || item.Medicine_Output.Contains("RIVAROXABAN") || item.Medicine_Output.Contains("DABIGATRAN") || item.Medicine_Output.Contains("EDOXABAN"))
-                                        {
-                                            <td style="background-color:orange" data-toggle="tooltip" title="">@Html.DisplayFor(modelItem => item.Medicine_Output)</td>
-                                        }
-
-                                        @*Gent*@
-                                        @if (item.Medicine_Output == "Gentamicin’")
-                                        {
-                                            <td>GENT</td>
-                                        }
-                                        else
-                                        {
-                                            <td>NO GENT</td>
-                                        }
-
-                                        @*Vanc*@
-                                        @if (item.Medicine_Output == "Vancomycin")
-                                        {
-                                            <td>VANC</td>
-                                        }
-                                        else
-                                        {
-                                            <td>NO VANC</td>
-                                        }
+                                        <td><img class="check-mark" data-toggle="tooltip" src="~/images/check-mark(1).png"></td>
+                                        <td><a href="~/Admin/MedicationsOrderPage2/@item.lnkpid">@Html.DisplayFor(modelItem => item.PatientName)</a></td>
+                                        <td style="color:red">@Html.DisplayFor(modelItem => item.DHX_Status)</td>
+                                        <td>@Html.Raw(System.Web.HttpUtility.HtmlDecode(item.Medicine_Output))</td>
                                         <td>
-                                            @*Caution Medications*@
-                                            @if (item.Medicine_Output.Contains("sodium chloride"))
+                                            @if (item.GENT == null)
                                             {
-                                                <img class="check-mark" data-toggle="tooltip" src="~/images/Alert.png" title="sodium chloride">
-                                            }
-                                            else if (item.Medicine_Output.Contains("potassium"))
-                                            {
-                                                <img class="check-mark" data-toggle="tooltip" src="~/images/Alert.png" title="potassium">
-                                            }
-                                            else if (item.Medicine_Output.Contains("phosphate"))
-                                            {
-                                                <img class="check-mark" data-toggle="tooltip" src="~/images/Alert.png" title="phosphate">
-                                            }
-                                            else if (item.Medicine_Output.Contains("Calcium"))
-                                            {
-                                                <img class="check-mark" data-toggle="tooltip" src="~/images/Alert.png" title="Calcium">
-                                            }
-                                            else if (item.Medicine_Output.Contains("magnesium"))
-                                            {
-                                                <img class="check-mark" data-toggle="tooltip" src="~/images/Alert.png" title="magnesium">
-                                            }
-                                            else if (item.Medicine_Output.Contains("digoxin"))
-                                            {
-                                                <img class="check-mark" data-toggle="tooltip" src="~/images/Alert.png" title="digoxin">
-                                            }
-                                            else if (item.Medicine_Output.Contains("MILRINONE"))
-                                            {
-                                                <img class="check-mark" data-toggle="tooltip" src="~/images/Alert.png" title="MILRINONE">
-                                            }
-                                            else if (item.Medicine_Output.Contains("ENOXIMONE"))
-                                            {
-                                                <img class="check-mark" data-toggle="tooltip" src="~/images/Alert.png" title="ENOXIMONE">
-                                            }
-                                            else if (item.Medicine_Output.Contains("cidofovir"))
-                                            {
-                                                <img class="check-mark" data-toggle="tooltip" src="~/images/Alert.png" title="cidofovir">
-                                            }
-                                            else if (item.Medicine_Output.Contains("ganciclovir"))
-                                            {
-                                                <img class="check-mark" data-toggle="tooltip" src="~/images/Alert.png" title="ganciclovir">
-                                            }
-                                            else if (item.Medicine_Output.Contains("foscarnet"))
-                                            {
-                                                <img class="check-mark" data-toggle="tooltip" src="~/images/Alert.png" title="foscarnet">
+                                                <span></span>
                                             }
                                             else
                                             {
-                                                <span>No Caution Medicine</span>
+                                                <span>@Html.DisplayFor(modelItem => item.GENT)</span>
+
                                             }
                                         </td>
-                                        <td>Blood results</td>  @*Blood results*@
-                                        <td>@Html.DisplayFor(modelItem => item.Screened_Output)</td>  @*Screened Status*@
-
-                                        @*VTE*@
-                                        @if (item.Medicine_Output.Contains("WARFARIN"))
-                                        {
-                                            <td>WARFARIN</td>
-                                        }
-                                        else if (item.Medicine_Output.Contains("APIXABAN"))
-                                        {
-                                            <td>APIXABAN</td>
-                                        }
-                                        else if (item.Medicine_Output.Contains("RIVAROXABAN"))
-                                        {
-                                            <td>RIVAROXABAN</td>
-                                        }
-                                        else if (item.Medicine_Output.Contains("DABIGATRAN"))
-                                        {
-                                            <td>DABIGATRAN</td>
-                                        }
-                                        else if (item.Medicine_Output.Contains("EDOXABAN"))
-                                        {
-                                            <td>EDOXABAN</td>
-                                        }
-                                        else if (item.Medicine_Output.Contains("ENOXAPARIN"))
-                                        {
-                                            <td>ENOXAPARIN</td>
-                                        }
-                                        else if (item.Medicine_Output.Contains("HEPARIN"))
-                                        {
-                                            <td>HEPARIN</td>
-                                        }
-                                        else
-                                        {
-                                            <td>No VTE</td>
-                                        }
-
-                                        @*Alert Medications*@
-                                        @if (item.Medicine_Output != null)
-                                        {
-                                            if (item.Medicine_Output.Contains("LITHIUM"))
+                                        <td>
+                                            @if (item.VANC == null)
                                             {
-                                                <td><img class="check-mark" data-toggle="tooltip" src="~/images/Alert.png" title="NPSA ALERT - CHECK CR,THYROID,LEVEL,BRAND"></td>
-                                            }
-                                            else if (item.Medicine_Output.Contains("Gentamicin"))
-                                            {
-                                                <td><img class="check-mark" data-toggle="tooltip" src="~/images/Alert.png" title="DISPLAY IF DOSE > 450MG"></td>
-                                            }
-                                            else if (item.Medicine_Output.Contains("LONG"))
-                                            {
-                                                <td><img class="check-mark" data-toggle="tooltip" src="~/images/Alert.png" title="CONTINUE"></td>
+                                                <span></span>
                                             }
                                             else
                                             {
-                                                <td><img class="check-mark" data-toggle="tooltip" src="~/images/Alert.png" title="No"></td>
+                                                <span>@Html.DisplayFor(modelItem => item.VANC)</span>
                                             }
-                                        }
+                                        </td>
+                                        <td>
+                                            @if (item.CautionMed != null)
+                                            {
+                                                <span>@Html.DisplayFor(modelItem => item.CautionMed)</span>
+                                            }
+                                            else
+                                            {
+                                                <span>No Cautuion Med</span>
+                                            }
+                                        </td>
+                                        <td>Blood results</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Screened_Output)</td>
+                                        <td>
+                                            @if (item.VTEMed != null)
+                                            {
+                                                <span>@Html.DisplayFor(modelItem => item.VTEMed)</span>
+                                            }
+                                            else
+                                            {
+                                                <span>No VTE Med</span>
+                                            }
+                                        </td>
 
-                                        <td class="check-mark">@Html.TextBoxFor(m => m.PatientTech[Model.PatientTech.IndexOf(item)].RequireCounselling)</td> @*Requires Counselling*@
-                                        <td><a data-toggle="tooltip" title="@Html.Raw(System.Web.HttpUtility.HtmlDecode(item.Follow_Output))">Pharmaceutical</a></td> @*Pharmacist follow up*@
+                                        <td><img class="check-mark" src="~/images/Alert.png" /> </td>
 
-                                        @*High Risk Medications*@
-                                        @if (item.Medicine_Output.Contains("METHADONE") || item.Medicine_Output.Contains("SUBOXONE") || item.Medicine_Output.Contains("LITHIUM") || item.Medicine_Output.Contains("CLOZAPINE") || item.Medicine_Output.Contains("AZATHIOPRINE") || item.Medicine_Output.Contains("AZATHIOPRINE") || item.Medicine_Output.Contains("MYCOPHENOLATE") || item.Medicine_Output.Contains("CICLOSPORIN") || item.Medicine_Output.Contains("SIROLIMUS") || item.Medicine_Output.Contains("TACROLIMUS") || item.Medicine_Output.Contains("HYDROCORTISONE") || item.Medicine_Output.Contains("Gentamicin") || item.Medicine_Output.Contains("Vancomycin") || item.Medicine_Output.Contains("Amikacin") || item.Medicine_Output.Contains("Streptomycin") || item.Medicine_Output.Contains("Tobramycin") || item.Medicine_Output.Contains("Tolvaptan") || item.Medicine_Output.Contains("chemotherapy") || item.Medicine_Output.Contains("Methotexate") || item.Medicine_Output.Contains("ANTI-MALARIA") || item.Medicine_Output.Contains("ANTI-RECTROVIRALS") || item.Medicine_Output.Contains("EPILEPTICS") || item.Medicine_Output.Contains("PARKINSONS") || item.Medicine_Output.Contains("FREE FORM FREQUENCY") || item.Medicine_Output.Contains("LONG  INSULIN") || item.Medicine_Output.Contains("INTEMEDIATE  INSULIN") || item.Medicine_Output.Contains("RAPID INSULIN") || item.Medicine_Output.Contains("Nil Reg Meds"))
-                                        {
-                                            <td>YES</td>
-                                        }
-                                        else
-                                        {
-                                            <td>NO</td>
-                                        }
-                                        <td>YES</td> @*Missed doses*@
+                                        <td class="check-mark">@Html.TextBoxFor(m => m.PatientTech[Model.PatientTech.IndexOf(item)].RequireCounselling)</td>
+                                        <td><a data-toggle="tooltip" title="@Html.Raw(System.Web.HttpUtility.HtmlDecode(item.Follow_Output))">**</a></td>
+                                        <td>High Risk Medications</td>
+                                        <td>
+                                            @if (item.Missed_Output != null)
+                                            {
+                                                <span>@Html.DisplayFor(modelItem => item.Missed_Output)</span>
+                                            }
+                                            else
+                                            {
+                                                <span>No</span>
+                                            }
+                                        </td>
+
                                         <td><input type="checkbox" name="TTO"></td>
+
                                     </tr>
                                 }
                             }

@@ -6274,3 +6274,33 @@ input.box-all {
         height: 450px;
     }
 }
+
+.colred {
+    background: red none repeat scroll 0 0;
+    font-size: 12px;
+    color: #fff !important;
+    font-weight: 600 !important;
+    padding: 5px;
+}
+
+.colgreen {
+    background: green none repeat scroll 0 0;
+    color: #fff !important;
+    font-size: 12px;
+    font-weight: 600 !important;
+    height: 28px !important;
+    padding: 5px;
+}
+
+
+.colyellow {
+    background: yellow none repeat scroll 0 0 !important;
+    font-size: 12px;
+    color: #000 !important;
+    font-weight: 600 !important;
+    padding: 5px;
+}
+
+.check-mark > input {
+    width: 100%;
+}

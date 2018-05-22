@@ -335,7 +335,7 @@ namespace NetCare.Controllers
             return View();
         }
         [HttpPost]
-        public JsonResult NewsSave(News obj)
+        public JsonResult NewsSave(News obj , HttpPostedFileBase imgnews)
         {
             try
             {
@@ -480,7 +480,9 @@ namespace NetCare.Controllers
         [HttpGet]
         public ActionResult MedicineList()
         {
-            return View(db.Medicines.OrderBy(m=>m.RiskFactor).ToList());
+            List<Medicine> obj = new List<Medicine>();
+            obj = db.Medicines.OrderByDescending(m => m.RiskFactor).ToList();
+            return View(obj);
         }
 
         /****************************Update Risk Number under Maintanance Link**********************************/

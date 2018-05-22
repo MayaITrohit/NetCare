@@ -110,7 +110,7 @@
                             <tr>
                                 <th class="main-th">Seen Today</th>
                                 <th class="main-th">Patient Name</th>
-                                @*<th class="main-th" data-toggle="tooltip" title="Dhx status + Number of days without dhx">Dhx Status</th>*@
+                                <th class="main-th" data-toggle="tooltip" title="Dhx status + Number of days without dhx">Dhx Status</th>
                                 <th class="main-th">Priority Patients</th>
                                 <th class="main-th">Requires Counselling</th>
                                 <th class="main-th">NOMAD</th>
@@ -126,11 +126,11 @@
                                     <tr>
                                         <td><img class="check-mark" src="~/images/check-mark(1).png"></td>
                                         <td><a href="~/Admin/MedicationsOrderPage2/@item.lnkpid">@Html.DisplayFor(modelItem => item.PatientName)</a></td>
-
-                                        <td data-toggle="tooltip" title="@Html.DisplayFor(modelItem => item.Medicine_Output)">Patient Medicine</td>
-                                        @if (item.Medicine_Output.Contains("Alendronic Acid") || item.Medicine_Output.Contains("Warfarin") || item.Medicine_Output.Contains("Dabigatran") || item.Medicine_Output.Contains("Edoxaban") || item.Medicine_Output.Contains("Rivaroxaban") || item.Medicine_Output.Contains("Apixaban"))
+                                        <td>@Html.DisplayFor(modelItem => item.DHX_Status)</td>
+                                        <td>@Html.Raw(System.Web.HttpUtility.HtmlDecode(item.Medicine_Output))</td>
+                                        @if (item.RequireCounselling!=null)
                                         {
-                                            <td><a data-toggle="tooltip" title="@Html.DisplayFor(modelItem => item.Medicine_Output)">Require Counselling</a></td>
+                                            <td>@Html.DisplayFor(modelItem => item.RequireCounselling)</td>
                                         }
                                         else
                                         {
